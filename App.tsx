@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -52,7 +53,7 @@ const App: React.FC = () => {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">왜 기존 방식은 <span className="text-blue-400">실패</span>했을까요?</h2>
-                  <p className="text-slate-400 text-lg">K Prime이 제시하는 혁신적인 해결책</p>
+                  <p className="text-slate-400 text-lg">K Prime이 제시하는 '인사의 도구화' 솔루션</p>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
@@ -63,14 +64,14 @@ const App: React.FC = () => {
                           <path d="M6 18L18 6M6 6l12 12" strokeWidth={3}/>
                         </svg>
                       </div>
-                      <h3 className="text-3xl font-bold">기존의 실패</h3>
+                      <h3 className="text-3xl font-bold">기존의 한계</h3>
                     </div>
                     <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                      <span className="text-red-400 font-bold">비싼 컨설팅</span>은 담당자가 운영을 못 해서 실패하고,<br />
-                      <span className="text-red-400 font-bold">저가형 솔루션</span>은 흉내만 내다가 끝납니다.
+                      <span className="text-red-400 font-bold">고가 컨설팅</span>은 보고서 작성 후 실행 단계에서 멈추고,<br />
+                      <span className="text-red-400 font-bold">범용 솔루션</span>은 우리 회사만의 특수성을 담지 못합니다.
                     </p>
                     <ul className="space-y-4">
-                      {["수천만 원 컨설팅 보고서는 서랍 속으로", "저가 솔루션은 깊이 없는 단순 계산기", "실행은 담당자 혼자 감당해야 하는 현실"].map((item, idx) => (
+                      {["현실과 동떨어진 수천만 원짜리 보고서", "인사 로직이 없는 단순 데이터 기록기", "결국 담당자의 수작업으로 돌아가는 운영"].map((item, idx) => (
                         <li key={idx} className="flex items-center space-x-3 text-slate-400 bg-white/5 p-4 rounded-xl">
                           <span className="text-red-500 font-bold">✕</span>
                           <span>{item}</span>
@@ -86,14 +87,14 @@ const App: React.FC = () => {
                           <path d="M5 13l4 4L19 7" strokeWidth={3}/>
                         </svg>
                       </div>
-                      <h3 className="text-3xl font-bold">K Prime의 해답</h3>
+                      <h3 className="text-3xl font-bold">AI인사팀의 해답</h3>
                     </div>
                     <p className="text-lg text-blue-50 mb-8 leading-relaxed">
-                      복잡한 수식은 <span className="font-bold">AI가 처리</span>합니다.<br />
-                      당신은 <span className="font-bold">'목표'만 입력</span>하세요. 전문가 수준의 결과물을 드립니다.
+                      복잡한 HR 로직은 <span className="font-bold">AIA가 자동화</span>합니다.<br />
+                      당신은 <span className="font-bold">최종 의사결정</span>에만 집중하세요. 전문가의 지능을 도구로 드립니다.
                     </p>
                     <ul className="space-y-4">
-                      {["컨설팅 수준의 로직을 도구화", "즉시 실행 가능한 결과물 제공", "지속적으로 사용 가능한 살아있는 도구"].map((item, idx) => (
+                      {["검증된 컨설팅 방법론의 알고리즘화", "즉시 실행 가능한 실무 중심 리포트", "조직 성장에 맞춰 진화하는 다이내믹 엔진"].map((item, idx) => (
                         <li key={idx} className="flex items-center space-x-3 text-white bg-white/10 p-4 rounded-xl">
                           <span className="font-bold">✓</span>
                           <span>{item}</span>
@@ -107,24 +108,24 @@ const App: React.FC = () => {
 
             <AIALineup onNavigateCategory={navigateToCategory} />
 
-            {/* Section: Philosophy (Updated to match sample image) */}
+            {/* Section: Philosophy */}
             <section id="philosophy" className="py-24 bg-slate-50">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-5xl font-black text-navy mb-4">서비스 소개</h2>
-                  <p className="text-slate-500 text-lg">K Prime HR이 추구하는 철학과 가치, 그리고 당신의 인사 업무를 혁신하는 방법</p>
+                  <p className="text-slate-500 text-lg">K Prime HR이 추구하는 전문성의 민주화</p>
                 </div>
 
                 <div className="text-center mb-20">
                    <h3 className="text-4xl font-black text-navy mb-2">K Prime <span className="text-blue-600">철학</span></h3>
-                   <p className="text-slate-400 italic">"우리는 복잡한 것을 단순하게, 전문적인 것을 접근 가능하게 만듭니다"</p>
+                   <p className="text-slate-400 italic">"복잡함을 단순함으로, 전문성을 일상으로"</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                   {[
-                    { title: "Operationalizing Complexity", subtitle: "복잡한 로직의 도구화", icon: "💡", desc: "고급 인사 컨설팅의 복잡한 방법론을 누구나 쉽게 사용할 수 있는 도구로 만듭니다." },
-                    { title: "Executable Intelligence", subtitle: "실행 가능한 지능", icon: "⦿", desc: "읽기만 하는 보고서가 아닌, 즉시 실행하고 지속적으로 사용할 수 있는 살아있는 도구를 제공합니다." },
-                    { title: "Democratizing Expertise", subtitle: "전문성의 민주화", icon: "👥", desc: "대기업만 누리던 최고 수준의 인사 관리를 모든 기업이 합리적인 비용으로 활용할 수 있게 합니다." }
+                    { title: "Operationalizing Complexity", subtitle: "복잡한 로직의 도구화", icon: "💡", desc: "고급 인사 컨설팅의 블랙박스를 걷어내고 누구나 버튼 하나로 실행 가능한 디지털 도구를 만듭니다." },
+                    { title: "Executable Intelligence", subtitle: "실행 가능한 지능", icon: "⦿", desc: "단순한 챗봇이 아닙니다. 인사 규정, 보상 테이블, 채용 가이드를 직접 생성하는 실무형 지능입니다." },
+                    { title: "Democratizing Expertise", subtitle: "전문성의 민주화", icon: "👥", desc: "대기업 인사팀만 누리던 최고 수준의 HR 인프라를 합리적인 비용으로 모든 기업에 보급합니다." }
                   ].map((item, idx) => (
                     <div key={idx} className="bg-white p-12 rounded-[2.5rem] border border-slate-100 shadow-xl hover:shadow-2xl transition-all text-center group">
                       <div className="w-20 h-20 bg-slate-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-8 text-4xl group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
@@ -143,8 +144,8 @@ const App: React.FC = () => {
             <section className="py-24 bg-white">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                  <h2 className="text-4xl font-bold text-[#0A192F] mb-4">왜 K Prime인가?</h2>
-                  <p className="text-slate-500">고가 컨설팅도, 저가 솔루션도 아닌 제3의 선택</p>
+                  <h2 className="text-4xl font-bold text-[#0A192F] mb-4">왜 AI인사팀인가?</h2>
+                  <p className="text-slate-500">기존의 비효율을 해결하는 가장 스마트한 선택</p>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-center border-separate border-spacing-0 rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
@@ -152,16 +153,16 @@ const App: React.FC = () => {
                       <tr>
                         <th className="p-6 border-b border-slate-200">구분</th>
                         <th className="p-6 border-b border-slate-200">고가 컨설팅</th>
-                        <th className="p-6 border-b border-slate-200">저가 솔루션</th>
-                        <th className="p-6 border-b border-slate-200 bg-blue-50 text-blue-600">AI인사팀</th>
+                        <th className="p-6 border-b border-slate-200">범용 SaaS</th>
+                        <th className="p-6 border-b border-slate-200 bg-blue-50 text-blue-600">AI인사팀.com</th>
                       </tr>
                     </thead>
                     <tbody className="text-base">
                       {[
-                        { label: "비용", old: "3,000만원~1억원", cheap: "월 10만원~30만원", prime: "연 20만원/1인 (또는 단건 3만원)" },
-                        { label: "실행 가능성", old: "보고서만 받고 종료", cheap: "단순 계산기 수준", prime: "즉시 실행 가능한 도구" },
-                        { label: "전문성", old: "매우 높음", cheap: "기초 수준", prime: "컨설팅 수준의 로직" },
-                        { label: "지속성", old: "1회성 프로젝트", cheap: "깊이 없는 단순 반복", prime: "지속 업데이트되는 AIA" },
+                        { label: "비용", old: "3,000만원~1억원", cheap: "월 수십만 원", prime: "연 20만원/1인 (최고의 가성비)" },
+                        { label: "실행력", old: "보고서 제공 후 종료", cheap: "기능적 툴 제공", prime: "인사 로직 기반의 자동 실행" },
+                        { label: "전문성", old: "컨설턴트 역량 의존", cheap: "기초 기능 위주", prime: "표준화된 전문가 지능(AIA)" },
+                        { label: "유지보수", old: "추가 비용 발생", cheap: "업데이트 제한적", prime: "성장에 따른 실시간 진화" },
                       ].map((row, idx) => (
                         <tr key={idx} className="hover:bg-slate-50 transition-colors">
                           <td className="p-6 border-b border-slate-100 font-bold text-slate-700">{row.label}</td>

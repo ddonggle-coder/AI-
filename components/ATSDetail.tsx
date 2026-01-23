@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 interface ATSDetailProps {
@@ -14,41 +15,190 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
     setTimeout(() => {
       setIsDiagnosing(false);
       setShowReport(true);
-      window.scrollTo({ top: 300, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 2500);
   };
 
   return (
     <div className="pt-20 bg-slate-100 min-h-screen pb-24 font-['Pretendard']">
-      {/* Hero Header */}
+      {/* --- "ATS진단이란?" 섹션 (결과 보기 전) --- */}
       {!showReport && (
-        <div className="bg-[#0A192F] py-24 text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-600/10 blur-[120px] pointer-events-none"></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <button onClick={onBack} className="text-blue-400 font-bold mb-8 flex items-center space-x-2 hover:text-blue-300 transition-colors text-sm">
-              <span>← 홈으로 돌아가기</span>
-            </button>
-            <div className="max-w-3xl">
-              <span className="text-blue-400 font-black text-xs uppercase tracking-[0.3em] mb-4 block">K Prime HR Intelligence</span>
-              <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tighter italic">ATS진단이란?</h1>
-              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-12 font-medium">
-                서류 너머의 역량까지 읽어내는 <br /> <span className="text-white underline decoration-blue-500 underline-offset-8">AIA 정밀 진단 리포트</span>를 경험하세요.
-              </p>
+        <div className="space-y-0">
+          {/* Hero Header: 홈 화면 네온 스타일 적용 */}
+          <div className="bg-[#0A192F] py-24 text-white relative overflow-hidden flex flex-col items-center justify-center text-center">
+            <div className="absolute inset-0 z-0">
+              <img 
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80" 
+                className="w-full h-full object-cover opacity-20"
+                alt="bg"
+              />
+              <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+            </div>
+            
+            <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
+              <button onClick={onBack} className="text-blue-400 font-bold mb-8 flex items-center space-x-2 hover:text-blue-300 transition-colors text-sm mx-auto md:mx-0">
+                <span>← 홈으로 돌아가기</span>
+              </button>
+              
+              <div className="relative mb-12">
+                <h1 className="flex flex-col md:flex-row items-center justify-center select-none italic">
+                  <span className="inline-block font-['Black_Han_Sans'] text-6xl md:text-8xl leading-none tracking-tighter neon-white pr-2">
+                    AI인사팀
+                  </span>
+                  <span className="inline-block font-['Orbitron'] text-4xl md:text-6xl leading-none tracking-widest neon-blue py-4">
+                    .COM
+                  </span>
+                </h1>
+                <p className="text-xl md:text-2xl text-slate-300 mt-6 font-bold tracking-tight">
+                  1인 정밀 적합도 진단부터 <span className="text-white underline decoration-blue-500 underline-offset-4">다수 후보자 비교/랭킹</span>까지
+                </p>
+              </div>
+
               {!isDiagnosing && (
                 <button 
                   onClick={handleDiagnose}
                   className="group relative bg-[#0074D9] text-white px-12 py-6 rounded-2xl font-bold text-2xl hover:bg-blue-600 transition-all shadow-2xl shadow-blue-500/40 hover:scale-105 active:scale-95 overflow-hidden"
                 >
-                  <span className="relative z-10">지금 바로 진단결과 보기</span>
+                  <span className="relative z-10">개인별 적합도 상세결과 보기</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
                 </button>
               )}
             </div>
           </div>
+
+          {/* Case Study Contents: D제약 언론홍보 리포트(4, 6, 7P) 반영 */}
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20 space-y-24 pb-24">
+            
+            {/* 1. 종합 스코어카드 비교 (4P 기반) */}
+            <section className="bg-white p-10 md:p-16 rounded-[3.5rem] shadow-2xl border border-slate-100">
+              <div className="mb-12 border-b border-slate-100 pb-8">
+                <span className="text-blue-600 font-black text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full italic">Case Analysis 01</span>
+                <h3 className="text-3xl font-black text-navy mt-4 italic leading-tight">후보자별 종합 스코어카드 비교</h3>
+                <p className="text-slate-400 text-sm mt-2 font-medium">OO제약 언론홍보(PR Manager) 후보자 3인 정량 비교 결과</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                  { name: "문OO (33세)", key: "Crisis Manager", exp: "80.8 (A)", comp: "100.0 (S)", rating: "최우수(Best)", color: "blue", best: true },
+                  { name: "김OO (30세)", key: "Digital Transformer", exp: "57.4 (C+)", comp: "78.5 (B+)", rating: "보류(Hold)", color: "slate" },
+                  { name: "조OO (34세)", key: "Brand Campaigner", exp: "50.8 (C)", comp: "85.7 (A)", rating: "미흡(Drop)", color: "slate" },
+                ].map((cand, i) => (
+                  <div key={i} className={`p-8 rounded-3xl border-2 transition-all hover:scale-[1.02] ${cand.best ? 'border-blue-500 bg-blue-50/30' : 'border-slate-100 bg-white'}`}>
+                    {cand.best && <span className="bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase mb-4 inline-block">BEST CHOICE</span>}
+                    <h4 className="text-xl font-black text-navy mb-1">{cand.name}</h4>
+                    <p className="text-blue-600 text-xs font-bold mb-6 italic">{cand.key}</p>
+                    
+                    <div className="space-y-4 mb-8">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-slate-400 font-bold">직무 경험 적합도</span>
+                        <span className="text-navy font-black">{cand.exp}</span>
+                      </div>
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-slate-400 font-bold">핵심 역량 적합도</span>
+                        <span className="text-navy font-black">{cand.comp}</span>
+                      </div>
+                    </div>
+                    
+                    <div className={`text-center py-3 rounded-xl font-black text-sm uppercase ${cand.best ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>
+                      {cand.rating}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* 2. 5대 핵심 요소 레이더 분석 (6P 기반) */}
+            <section className="bg-white p-10 md:p-16 rounded-[3.5rem] shadow-2xl border border-slate-100 overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+              <div className="mb-12 border-b border-slate-100 pb-8 relative z-10">
+                <span className="text-blue-600 font-black text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full italic">Case Analysis 02</span>
+                <h3 className="text-3xl font-black text-navy mt-4 italic leading-tight">5대 핵심 요소 정량 비교</h3>
+                <p className="text-slate-400 text-sm mt-2 font-medium">위기 관리, 전략 기획 등 핵심 역량 밸런스 분석</p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                <div className="lg:col-span-5 flex justify-center">
+                  <div className="w-64 h-64 border-2 border-dashed border-slate-200 rounded-full flex items-center justify-center relative">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-full h-full bg-blue-500/10 clip-path-polygon rotate-12"></div>
+                    </div>
+                    <div className="text-[10px] font-black text-slate-400 space-y-1 text-center">
+                      <p>Crisis Management</p>
+                      <p className="text-blue-600">문OO 압승</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="lg:col-span-7 space-y-6">
+                  {[
+                    { t: "문OO: 위기 관리 압승 (Crisis: 100.0)", d: "법학 전공 및 대형 위기 대응 경험을 바탕으로 위기 관리 및 언론 관계 영역에서 독보적인 우위 점함.", icon: "🛡️" },
+                    { t: "김OO: AI 활용 독주 (AI Skill: 85.0)", d: "생성형 AI 활용 능력은 최상위 수준이나, 핵심인 산업 이해도와 위기 관리 점수가 낮아 단독 수행에 리스크 존재.", icon: "🤖" },
+                    { t: "조OO: 전략적 기획 우수 (Strategy: 85.5)", d: "마케팅 관점의 브랜드 홍보 전략 수립 능력은 탁월하나, 규제 산업(ETC)에 필수적인 위기 관리 능력 부족.", icon: "📢" }
+                  ].map((insight, idx) => (
+                    <div key={idx} className="flex space-x-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 group hover:bg-white hover:shadow-lg transition-all">
+                      <div className="text-2xl">{insight.icon}</div>
+                      <div>
+                        <p className="font-black text-navy text-sm mb-1">{insight.t}</p>
+                        <p className="text-[11px] text-slate-500 leading-relaxed">{insight.d}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* 3. 핵심 역량 적합도 (7P 기반) */}
+            <section className="bg-white p-10 md:p-16 rounded-[3.5rem] shadow-2xl border border-slate-100">
+              <div className="mb-12 border-b border-slate-100 pb-8">
+                <span className="text-blue-600 font-black text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full italic">Case Analysis 03</span>
+                <h3 className="text-3xl font-black text-navy mt-4 italic leading-tight">행동 특성 모델 기반 잠재력 평가</h3>
+                <p className="text-slate-400 text-sm mt-2 font-medium">유연성, 정보 수집, 개념적 사고 등 Spencer & Spencer 역량 대조</p>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead className="text-[11px] font-black uppercase text-slate-400 border-b-2 border-slate-100">
+                    <tr>
+                      <th className="py-4 px-2">역량 항목</th>
+                      <th className="py-4 px-2 text-center">Target</th>
+                      <th className="py-4 px-2 text-center text-blue-600">① 문OO</th>
+                      <th className="py-4 px-2 text-center">② 김OO</th>
+                      <th className="py-4 px-2 text-center">③ 조OO</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-[12px]">
+                    {[
+                      { item: "유연성/적응력", target: "Lv.3", m: "Lv.5 (+2)", k: "Lv.4 (+1)", j: "Lv.4 (+1)" },
+                      { item: "정보 수집", target: "Lv.3", m: "Lv.4 (+1)", k: "Lv.5 (+2)", j: "Lv.3 (0)" },
+                      { item: "개념적 사고", target: "Lv.4", m: "Lv.4 (0)", k: "Lv.2 (-2)", j: "Lv.3 (-1)" },
+                      { item: "영향력 행사", target: "Lv.3", m: "Lv.4 (+1)", k: "Lv.3 (0)", j: "Lv.5 (+2)" },
+                    ].map((row, i) => (
+                      <tr key={i} className="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                        <td className="py-4 px-2 font-bold text-navy">{row.item}</td>
+                        <td className="py-4 px-2 text-center font-bold text-slate-400">{row.target}</td>
+                        <td className="py-4 px-2 text-center font-black text-blue-600">{row.m}</td>
+                        <td className="py-4 px-2 text-center text-slate-500">{row.k}</td>
+                        <td className="py-4 px-2 text-center text-slate-500">{row.j}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              
+              <div className="mt-10 p-8 bg-blue-900 text-white rounded-[2rem] shadow-xl">
+                <p className="text-sm font-black mb-2 flex items-center italic">
+                  <span className="mr-2">💡</span> 종합 역량 분석 결과
+                </p>
+                <p className="text-xs text-blue-100 leading-relaxed font-medium">
+                  문OO은 위기 관리에 필수적인 논리/적응력을 완비했습니다. 조OO는 확산력(Impact), 김OO는 기술력(Tech)에 강점이 있으나, 제약 산업의 핵심인 '개념적 사고(위기 대응 논리)' 역량에서 문OO이 유일하게 적합 판정을 받았습니다.
+                </p>
+              </div>
+            </section>
+          </div>
         </div>
       )}
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* --- 분석 중 애니메이션 (기존 유지) --- */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {isDiagnosing && (
           <div className="flex flex-col items-center justify-center py-32 space-y-8 bg-white rounded-[3.5rem] shadow-2xl border border-slate-100 animate-pulse">
             <div className="relative w-28 h-28">
@@ -62,188 +212,88 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
           </div>
         )}
 
-        {!showReport && !isDiagnosing && (
-          <div className="space-y-32 py-20">
-            {/* Section: Solution (PDF 4p) */}
-            <section className="bg-white p-12 md:p-16 rounded-[3rem] shadow-xl border border-slate-100">
-               <div className="flex flex-col md:flex-row gap-12 items-center">
-                 <div className="md:w-1/2 space-y-6">
-                    <span className="text-blue-600 font-black text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">Solution</span>
-                    <h3 className="text-3xl font-black text-navy leading-tight">검증된 AIA를 쇼핑하고,<br />코디네이터가 완성을 돕습니다</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">
-                      필요한 HR 기능 모듈을 장바구니에 담아 즉시 사용 가능합니다. 마치 앱스토어에서 앱을 다운로드하듯 필요한 HR 기능만 선택할 수 있습니다.
-                    </p>
-                 </div>
-                 <div className="md:w-1/2 grid grid-cols-1 gap-4">
-                    {[
-                      { t: "AIA Shop", d: "앱스토어처럼 필요한 모듈을 즉시 사용" },
-                      { t: "Micro-Consulting", d: "전문가의 저렴하고 빠른 밀착 지원" },
-                      { t: "Dynamic Engine", d: "성장 단계에 맞춰 변하는 지능형 시스템" }
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center space-x-4 p-5 bg-slate-50 rounded-2xl border border-slate-100">
-                         <div className="w-10 h-10 bg-navy text-white rounded-xl flex items-center justify-center font-black text-sm">{i+1}</div>
-                         <div>
-                           <p className="font-bold text-navy text-sm">{item.t}</p>
-                           <p className="text-xs text-slate-400">{item.d}</p>
-                         </div>
-                      </div>
-                    ))}
-                 </div>
-               </div>
-            </section>
-
-            {/* Section: Core Technology (PDF 5p) */}
-            <section className="bg-navy p-12 md:p-20 rounded-[4rem] text-white relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 blur-[100px] pointer-events-none"></div>
-               <div className="relative z-10 flex flex-col items-center text-center space-y-8">
-                  <span className="text-blue-400 font-black text-xs uppercase tracking-widest bg-white/5 px-3 py-1 rounded-full">Core Technology</span>
-                  <h3 className="text-4xl font-black leading-tight italic">"직무명이 없어도 괜찮습니다"</h3>
-                  <p className="text-slate-400 max-w-2xl leading-relaxed">
-                    하는 일만 말하면 AI가 “직무”를 역산해 인사제도를 짜줍니다. 실제 업무 내용에서 출발하는 Task-First Bottom-up 방식의 혁신을 경험하세요.
-                  </p>
-                  <div className="flex flex-wrap justify-center gap-4 pt-8">
-                    {["과업 입력", "심층 분석(Drilling)", "Inverse Mapping", "Auto Generation"].map((step, i) => (
-                      <div key={i} className="flex items-center space-x-4">
-                        <div className="bg-white/10 px-6 py-4 rounded-2xl border border-white/10 font-bold text-sm">{step}</div>
-                        {i < 3 && <div className="text-blue-400">→</div>}
-                      </div>
-                    ))}
-                  </div>
-               </div>
-            </section>
-
-            {/* Section: IP Protection (PDF 10p) */}
-            <section className="max-w-4xl mx-auto">
-               <div className="text-center mb-12">
-                 <span className="text-blue-600 font-black text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">IP Protection</span>
-                 <h3 className="text-3xl font-black text-navy mt-4 mb-4 leading-tight">남의 것을 베끼지 않습니다<br />K Prime의 문법으로 재창조합니다</h3>
-                 <p className="text-slate-500 text-sm">지적재산권 보호는 K Prime 플랫폼의 신뢰성을 보장하는 핵심 요소입니다.</p>
-               </div>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl">
-                    <h4 className="font-black text-navy mb-4 flex items-center">
-                      <span className="w-6 h-6 bg-red-50 text-red-500 rounded flex items-center justify-center text-xs mr-2">🛡️</span>
-                      Legal Firewall (법적 방화벽)
-                    </h4>
-                    <p className="text-[11px] text-slate-400 leading-relaxed italic">
-                      IP 자가진단 체크리스트와 면책 동의 의무화, 명확한 분쟁 해결 절차를 통해 법적 리스크를 원천 차단합니다.
-                    </p>
-                  </div>
-                  <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl">
-                    <h4 className="font-black text-navy mb-4 flex items-center">
-                      <span className="w-6 h-6 bg-blue-50 text-blue-600 rounded flex items-center justify-center text-xs mr-2">✨</span>
-                      Abstraction & Re-creation
-                    </h4>
-                    <p className="text-[11px] text-slate-400 leading-relaxed italic">
-                      특정 기업 데이터 사용을 금지하고, 모든 로직을 K Prime 전용 문법으로 변환하여 새로운 2차 저작물로 재창조합니다.
-                    </p>
-                  </div>
-               </div>
-            </section>
-          </div>
-        )}
-
+        {/* --- 상세보기 리포트 (김태현 지원자 버전 - 기존 유지) --- */}
         {showReport && (
-          <div className="space-y-12 animate-[fadeIn_0.8s_ease-out]">
+          <div className="space-y-16 animate-[fadeIn_0.8s_ease-out]">
             <div className="flex justify-between items-center mb-4">
               <button onClick={() => setShowReport(false)} className="text-slate-500 font-bold hover:text-navy transition-colors text-sm">
                 ← 진단 페이지로
               </button>
-              <h2 className="text-2xl font-black text-navy italic uppercase tracking-tighter">ATS진단 상세보기</h2>
-              <button 
-                onClick={() => window.print()}
-                className="bg-navy text-white px-4 py-2 rounded-lg font-bold text-xs hover:bg-blue-900 transition-all"
-              >
-                PDF 다운로드
-              </button>
+              <h2 className="text-2xl font-black text-navy italic uppercase tracking-tighter">ATS진단 상세 리포트</h2>
+              <div className="flex space-x-2">
+                <button onClick={() => window.print()} className="bg-navy text-white px-4 py-2 rounded-lg font-bold text-xs hover:bg-blue-900 transition-all">
+                  PDF 다운로드
+                </button>
+              </div>
             </div>
 
-            {/* --- PAGE 1: Scorecard & Overview --- */}
+            {/* PAGE 1: Scorecard & Overview */}
             <div className="bg-white shadow-2xl rounded-sm overflow-hidden border border-slate-200">
               <div className="bg-[#1e293b] p-6 text-white flex justify-between items-center border-b-4 border-orange-500">
                 <div className="flex items-center space-x-4">
                   <div className="text-3xl">📊</div>
                   <div>
-                    <h1 className="text-xl font-black tracking-tight">K Prime Job Fit Report</h1>
-                    <p className="text-[10px] text-slate-400 font-bold tracking-widest uppercase">OO 제약사 (Global Pharma) / 제제연구 (Formulation Researcher)</p>
+                    <h1 className="text-xl font-black tracking-tight uppercase">K Prime Job Fit Report</h1>
+                    <p className="text-[10px] text-slate-400 font-bold tracking-widest uppercase">OO제약 (Seoul Pharma) / 제제연구 (Formulation Researcher)</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-black">익명 지원자 A</p>
+                  <p className="text-sm font-black text-white">김OO 지원자</p>
                   <p className="text-[9px] text-slate-400">ATS-S/D 202542 | 2025-12-15</p>
                 </div>
               </div>
 
-              <div className="p-8 space-y-8">
-                {/* Scorecard Summary */}
-                <div className="border border-slate-200 rounded-lg p-6 bg-slate-50">
-                  <h3 className="text-sm font-black text-navy mb-6 flex items-center">
-                    <span className="w-1 h-4 bg-orange-500 mr-2 rounded-full"></span> Scorecard Summary
+              <div className="p-10 space-y-12">
+                <div>
+                  <h3 className="text-lg font-black text-navy mb-6 flex items-center">
+                    <span className="w-1.5 h-5 bg-orange-500 mr-3 rounded-full"></span> Scorecard Summary
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-white p-6 rounded-lg border border-slate-100 text-center">
-                      <p className="text-[10px] font-black text-slate-400 mb-2">■ 직무 경험 적합도</p>
-                      <p className="text-4xl font-black text-blue-900">67.1</p>
-                      <p className="text-xs font-bold text-slate-500 mt-2">대체로 부적합</p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
+                      <p className="text-[11px] font-black text-slate-400 mb-3">■ 직무 경험 적합도</p>
+                      <p className="text-5xl font-black text-blue-900">67.1</p>
+                      <p className="text-sm font-bold text-slate-500 mt-3">대체로 부적합</p>
                     </div>
-                    <div className="bg-white p-6 rounded-lg border border-slate-100 text-center">
-                      <p className="text-[10px] font-black text-slate-400 mb-2">■ 핵심 역량 적합도</p>
-                      <p className="text-4xl font-black text-blue-900">86.3</p>
-                      <p className="text-xs font-bold text-slate-500 mt-2">부분 적합</p>
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
+                      <p className="text-[11px] font-black text-slate-400 mb-3">■ 핵심 역량 적합도</p>
+                      <p className="text-5xl font-black text-blue-900">86.3</p>
+                      <p className="text-sm font-bold text-slate-500 mt-3">부분 적합</p>
                     </div>
-                    <div className="bg-[#1e293b] p-6 rounded-lg text-center relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 w-full h-full bg-orange-500/10 pointer-events-none"></div>
-                      <p className="text-[10px] font-black text-blue-300 mb-2 uppercase tracking-widest">TOTAL FIT SCORE</p>
-                      <p className="text-5xl font-black text-white">76.7</p>
-                      <div className="mt-4 bg-orange-500 text-white font-black py-1 px-4 rounded-full text-xs inline-block">부분 적합</div>
+                    <div className="bg-[#1e293b] p-8 rounded-xl text-center relative overflow-hidden">
+                      <p className="text-[11px] font-black text-blue-300 mb-3 uppercase tracking-widest">TOTAL FIT SCORE</p>
+                      <p className="text-6xl font-black text-white">76.7</p>
+                      <div className="mt-4 bg-orange-500 text-white font-black py-1.5 px-6 rounded-full text-xs inline-block">부분 적합</div>
                     </div>
                   </div>
-                  <div className="mt-6 p-4 bg-white border border-slate-100 rounded-lg">
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      <span className="font-bold text-navy">■ 종합 적합도 의견:</span> "B (보통) - 정량적 경험 점수는 '보완 필요'이나, 개량신약 및 ODT 등 핵심 직무 기술(Skill)의 적합도가 매우 높아 실무 성과는 '우수'가 기대됨."
+                  <div className="mt-8 p-6 bg-slate-50 border border-slate-100 rounded-xl">
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      <span className="font-black text-navy mr-2">■ 종합 적합도 의견:</span> "B (보통) - 정량적 경험 점수는 '보완필요'이나, 개량신약 및 ODT 등 핵심 직무 기술(Skill)의 적합도가 매우 높아 실무 성과는 '우수'가 기대됨."
                     </p>
                   </div>
                 </div>
 
-                {/* Analysis Overview */}
-                <div className="border border-slate-200 rounded-lg p-6">
-                  <h3 className="text-sm font-black text-navy mb-6 flex items-center">
-                    <span className="w-1 h-4 bg-orange-500 mr-2 rounded-full"></span> 분석 개요 (Analysis Overview)
+                <div>
+                  <h3 className="text-lg font-black text-navy mb-6 flex items-center">
+                    <span className="w-1.5 h-5 bg-orange-500 mr-3 rounded-full"></span> 분석 개요 (Analysis Overview)
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                        <p className="text-[10px] font-bold text-slate-400 mb-2 uppercase">Company / Job Info</p>
-                        <ul className="text-xs space-y-1.5 text-slate-700">
-                          <li className="flex justify-between"><span>• Target Industry</span> <span className="font-bold">Pharmaceuticals / Bio</span></li>
-                          <li className="flex justify-between"><span>• Target Company</span> <span className="font-bold">OO 제약사 (Global Pharma)</span></li>
-                          <li className="flex justify-between"><span>• Target Position</span> <span className="font-bold">제제연구 (Formulation Researcher)</span></li>
-                          <li className="flex justify-between"><span>• Candidate</span> <span className="font-bold">익명 지원자 (경력 34개월)</span></li>
-                        </ul>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                          <p className="text-[10px] font-bold text-slate-400 mb-2 uppercase">업무분류/유형</p>
-                          <p className="text-[11px] text-slate-600 leading-relaxed">개량신약 독자 연구, ODF(구강붕해필름) 특화 기술, GMP 규정 준수</p>
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                          <p className="text-[10px] font-bold text-slate-400 mb-2 uppercase">직무 키워드</p>
-                          <p className="text-[11px] text-slate-600 leading-relaxed">Modified New Drug, Smart Film (ODF), Tech Transfer, Validation</p>
-                        </div>
-                      </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                      <p className="text-xs font-bold text-slate-400 mb-4 uppercase tracking-widest">Company / ORG. / Job Info</p>
+                      <ul className="text-xs space-y-3 text-slate-700">
+                        <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Target Industry</span> <span className="font-bold">제약/바이오</span></li>
+                        <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Target Company</span> <span className="font-bold">OO제약 (Seoul Pharma)</span></li>
+                        <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Target Position</span> <span className="font-bold">제제연구 (Formulation Researcher)</span></li>
+                        <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Candidate</span> <span className="font-bold">"김OO (경력 34개월)"</span></li>
+                      </ul>
                     </div>
-                    <div className="space-y-4">
-                      <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                        <p className="text-[10px] font-bold text-slate-400 mb-2 uppercase">채용 사유</p>
-                        <p className="text-[11px] text-slate-600 leading-relaxed">
-                          OO 제약사는 스마트 필름 기술을 기반으로 한 개량신약 파이프라인 확장과 글로벌 기술 수출 가속화를 위해 즉시 실무 수행이 가능한 연구원을 충원함.
-                        </p>
+                    <div className="grid grid-cols-1 gap-4">
+                      <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                        <p className="text-xs font-bold text-slate-400 mb-2 uppercase">직무 키워드</p>
+                        <p className="text-xs text-slate-600 leading-relaxed">Modified New Drug, Smart Film (ODF), Tech Transfer, GMP Validation</p>
                       </div>
-                      <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                        <p className="text-[10px] font-bold text-slate-400 mb-2 uppercase">직무 특성</p>
-                        <p className="text-[11px] text-slate-600 leading-relaxed">
-                          단순 제제 실험을 넘어 특허 회피 전략 수립, 대량 생산을 위한 공정 밸리데이션, 그리고 타 제약사로의 기술 이전을 위한 CTD 자료 작성 능력이 복합적으로 요구됨.
-                        </p>
+                      <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                        <p className="text-xs font-bold text-slate-400 mb-2 uppercase">채용 사유</p>
+                        <p className="text-xs text-slate-600 leading-relaxed">스마트 필름 기반 개량신약 파이프라인 확장과 글로벌 기술 수출 가속화를 위해 충원함.</p>
                       </div>
                     </div>
                   </div>
@@ -251,18 +301,236 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
               </div>
             </div>
 
-            {/* --- PAGE 2 & 3: Details --- */}
-            <div className="bg-white shadow-2xl rounded-sm overflow-hidden border border-slate-200 p-8 space-y-12">
-               <p className="text-center text-slate-400 text-sm italic py-12">상세 분석 내용이 이어집니다... (실제 리포트에서는 모든 데이터가 제공됩니다)</p>
+            {/* PAGE 2: Evaluation Criteria & Experience Fit */}
+            <div className="bg-white shadow-2xl rounded-sm overflow-hidden border border-slate-200 p-10 space-y-12">
+               <div>
+                  <h3 className="text-lg font-black text-navy mb-6 flex items-center">
+                    <span className="w-1.5 h-5 bg-orange-500 mr-3 rounded-full"></span> 직무 적합도 기준 평가요소 (Standard Criteria)
+                  </h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-xs text-left border-collapse border border-slate-200">
+                      <thead className="bg-slate-50 text-slate-500 font-bold">
+                        <tr>
+                          <th className="p-3 border border-slate-200">구분</th>
+                          <th className="p-3 border border-slate-200">평가요소</th>
+                          <th className="p-3 border border-slate-200">평가요소 선정 사유</th>
+                          <th className="p-3 border border-slate-200 text-center">요구 수준(중요도)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          { g: "Skill", f: "개량신약 제제연구", s: "주요 파이프라인의 제형 변경 및 특허 회피 능력 필수 (JD 명시)", l: "Critical (100)" },
+                          { g: "Skill", f: "ODF/DDS 연구 기술", s: "핵심 사업인 구강붕해필름(ODF) 및 약물전달시스템 연구 적합성", l: "Very High (95)" },
+                          { g: "Skill", f: "분석 및 Validation", s: "연구 결과 신뢰성 확보를 위한 분석법 밸리데이션 수행 능력", l: "High (90)" },
+                          { g: "Ability", f: "기술이전(Tech Transfer)", s: "개발된 제제 기술을 타 생산처로 이관하고 상용화하는 능력", l: "Med-High (85)" },
+                          { g: "핵심역량", f: "성취 지향성", s: "특허 회피 및 제제 안정성 확보라는 어려운 목표를 달성해야 함", l: "Target Lv. 4" },
+                        ].map((row, i) => (
+                          <tr key={i} className="hover:bg-slate-50">
+                            <td className="p-3 border border-slate-200 font-medium text-slate-500">{row.g}</td>
+                            <td className="p-3 border border-slate-200 font-bold text-navy">{row.f}</td>
+                            <td className="p-3 border border-slate-200 text-slate-600 leading-relaxed">{row.s}</td>
+                            <td className="p-3 border border-slate-200 text-center font-bold text-blue-600">{row.l}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+               </div>
+
+               <div>
+                  <h3 className="text-lg font-black text-navy mb-6 flex items-center">
+                    <span className="w-1.5 h-5 bg-orange-500 mr-3 rounded-full"></span> Job Experience Fit <span className="ml-3 px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">67.1</span>
+                  </h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                     <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
+                        <p className="text-xs font-bold text-slate-400 mb-8 uppercase text-center">Score Comparison</p>
+                        <div className="space-y-8">
+                           {[
+                             { label: "개량신약 연구", req: 100, cand: 80 },
+                             { label: "ODF/DDS 기술", req: 95, cand: 51.3 },
+                             { label: "분석/Validation", req: 90, cand: 72 },
+                             { label: "기술이전", req: 85, cand: 61.2 },
+                             { label: "GMP/CTD", req: 85, cand: 40.8 },
+                           ].map((item, i) => (
+                             <div key={i} className="space-y-3">
+                               <div className="flex justify-between text-[11px] font-black">
+                                 <span className="text-navy uppercase">{item.label}</span>
+                                 <span className="text-slate-400">요구 {item.req} / <span className="text-orange-600">지원자 {item.cand}</span></span>
+                               </div>
+                               <div className="h-4 w-full bg-slate-200 rounded-full overflow-hidden relative">
+                                  <div className="absolute top-0 left-0 h-full bg-blue-900 opacity-20" style={{ width: `${item.req}%` }}></div>
+                                  <div className="absolute top-0 left-0 h-full bg-blue-900 shadow-lg" style={{ width: `${item.cand}%` }}></div>
+                               </div>
+                             </div>
+                           ))}
+                        </div>
+                     </div>
+                     <div className="space-y-4">
+                        <p className="text-[11px] text-slate-400 font-bold uppercase mb-4">Analysis Evidence</p>
+                        {[
+                          { t: "개량신약 연구", d: "- Telmisartan, Valsartan 등 다수의 프로젝트 주도\n- 특허 회피 및 제형 변경 독자 수행" },
+                          { t: "ODF/DDS 기술", d: "- Tadalafil 구강붕해정(ODT) 연구 경험 보유\n- ODT 기술로 구강 붕해 기전 이해도 높음" },
+                          { t: "분석/Validation", d: "- 까다로운 분석 조건의 Validation 위탁 수행 완수\n- 기기 분석 및 공정 검증 실무 경험" }
+                        ].map((ev, i) => (
+                          <div key={i} className="bg-white p-4 border border-slate-100 rounded-xl shadow-sm">
+                            <p className="text-xs font-bold text-navy mb-2">{ev.t}</p>
+                            <p className="text-[11px] text-slate-500 whitespace-pre-line leading-relaxed">{ev.d}</p>
+                          </div>
+                        ))}
+                     </div>
+                  </div>
+               </div>
             </div>
 
-            {/* Bottom CTA */}
+            {/* PAGE 3: Competency Fit & Feedback */}
+            <div className="bg-white shadow-2xl rounded-sm overflow-hidden border border-slate-200 p-10 space-y-12">
+               <div>
+                  <h3 className="text-lg font-black text-navy mb-6 flex items-center">
+                    <span className="w-1.5 h-5 bg-orange-500 mr-3 rounded-full"></span> Competency Fit <span className="ml-3 px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">86.3</span>
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                     <div className="space-y-10">
+                        {[
+                          { l: "성취 지향성", target: 4, score: 4 },
+                          { l: "분석적 사고", target: 4, score: 3 },
+                          { l: "조직 헌신", target: 4, score: 4 },
+                          { l: "철저함/질서", target: 4, score: 3 },
+                        ].map((comp, i) => (
+                          <div key={i} className="space-y-2">
+                             <div className="flex justify-between text-[11px] font-bold text-slate-500 uppercase">
+                               <span>{comp.l}</span>
+                               <span className="text-blue-600">요구 {comp.target} / 측정 {comp.score}</span>
+                             </div>
+                             <div className="flex space-x-1">
+                               {[1,2,3,4,5].map(v => (
+                                 <div key={v} className={`h-4 flex-1 rounded-sm ${v <= comp.score ? 'bg-blue-600' : 'bg-slate-100'}`}></div>
+                               ))}
+                             </div>
+                          </div>
+                        ))}
+                     </div>
+                     <div className="bg-slate-50 p-6 rounded-2xl text-[11px] text-slate-500 space-y-4 leading-relaxed italic">
+                        <p>• (S/A) 10개월간 반복 실험을 통해 특허를 회피하고 안정성을 확보. 특허 획득 (Lv.4 수준 명확)</p>
+                        <p>• (S/A) 가족의 사고를 위해 본인의 커리어를 희생하고 2년간 간병. 개인보다 조직(가족) 우선시 증명</p>
+                        <p>• (S/A) GMP 규정에 따른 Validation 수행 및 시험기기 검증 반복. 정직한 데이터 관리 (Lv.3 적합)</p>
+                     </div>
+                  </div>
+               </div>
+
+               <div>
+                  <h3 className="text-lg font-black text-navy mb-8 flex items-center">
+                    <span className="w-1.5 h-5 bg-orange-500 mr-3 rounded-full"></span> Feedback & Advice
+                  </h3>
+                  <div className="overflow-x-auto mb-10">
+                     <table className="w-full text-xs text-center border-collapse">
+                        <thead className="bg-[#1e293b] text-white">
+                           <tr>
+                              <th className="p-4 border border-slate-700">적합도 종합</th>
+                              <th className="p-4 border border-slate-700">종합판단</th>
+                              <th className="p-4 border border-slate-700">적합도 의견</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr className="bg-slate-50">
+                              <td className="p-4 border border-slate-200 font-bold">직무 경험 적합도</td>
+                              <td className="p-4 border border-slate-200 text-orange-600 font-bold">C (보완필요)</td>
+                              <td className="p-4 border border-slate-200 text-left text-slate-500">3년 미만 경력으로 정량 점수는 낮으나, 기술적 적합도는 최상위 수준임.</td>
+                           </tr>
+                           <tr>
+                              <td className="p-4 border border-slate-200 font-bold">핵심 역량 적합도</td>
+                              <td className="p-4 border border-slate-200 text-blue-600 font-bold">A (우수)</td>
+                              <td className="p-4 border border-slate-200 text-left text-slate-500">연구원으로서 갖춰야 할 집요함과 조직헌신도가 탁월함.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-8 bg-blue-50/50 border border-blue-100 rounded-[2rem]">
+                      <p className="text-sm font-black text-blue-600 mb-4 flex items-center italic">✨ Strengths</p>
+                      <p className="text-xs text-slate-600 leading-relaxed font-bold">
+                        서울제약의 주요 파이프라인(Tadalafil) 및 ODT 기술에 대한 직접적인 연구 경험은 타 지원자와 차별화되는 강력한 무기입니다.
+                      </p>
+                    </div>
+                    <div className="p-8 bg-orange-50/50 border border-orange-100 rounded-[2rem]">
+                      <p className="text-sm font-black text-orange-600 mb-4 flex items-center italic">⚠️ Weakness / Advice</p>
+                      <p className="text-xs text-slate-600 leading-relaxed font-bold">
+                        2년의 경력 단절로 인해 최신 GMP 규정 업데이트 지식이 부족할 리스크가 있음. 공백기 동안의 학습 노력을 면접 시 확인할 필요가 있음.
+                      </p>
+                    </div>
+                  </div>
+               </div>
+            </div>
+
+            {/* PAGE 4: Recommendations & Steps */}
+            <div className="bg-white shadow-2xl rounded-sm overflow-hidden border border-slate-200 p-10 space-y-12">
+               <div>
+                  <h3 className="text-lg font-black text-navy mb-8 flex items-center">
+                    <span className="w-1.5 h-5 bg-orange-500 mr-3 rounded-full"></span> Recommendation
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                        <p className="text-[10px] font-black text-slate-400 mb-4 uppercase">추천 직무</p>
+                        <h4 className="text-lg font-black text-navy mb-2">화학 기술자 (Chemical Technicians)</h4>
+                        <p className="text-xs text-slate-500 leading-relaxed">화학적 실험, 공정 테스트 등을 통해 연구와 생산을 지원하는 전문 기술직.</p>
+                     </div>
+                     <div className="bg-blue-50/30 p-6 rounded-2xl border border-blue-100">
+                        <p className="text-[10px] font-black text-blue-400 mb-4 uppercase">추천 채용공고</p>
+                        <ul className="text-xs space-y-4">
+                           <li>
+                              <p className="font-bold text-navy">[씨OO바이오] 제제연구팀 신입/경력</p>
+                              <p className="text-slate-500 text-[10px]">사유: ODF 제제 기술 보유자 우대, Tadalafil 실무 연관성 높음.</p>
+                           </li>
+                           <li>
+                              <p className="font-bold text-navy">[CO제약] 제제연구소 경력직 채용</p>
+                              <p className="text-slate-500 text-[10px]">사유: 독자적 필름 기술 보유 기업으로 최적 포지션.</p>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+
+               <div>
+                  <h3 className="text-lg font-black text-navy mb-6 flex items-center">
+                    <span className="w-1.5 h-5 bg-orange-500 mr-3 rounded-full"></span> K Prime ATS Score® 공략 가이드
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      { step: "1. 내상태 정리", desc: "경력 특징, 강약점, 적합 직무 인지 여부" },
+                      { step: "2. 타겟 탐색", desc: "적합 직무, 기업, 분야의 명확화", ai: true },
+                      { step: "7. 대면면접 전략", desc: "효과적인 어필 포인트 대비", ai: true },
+                      { step: "9. 협상 전략", desc: "처우 및 입사 시기 조율", ai: true }
+                    ].map((step, i) => (
+                      <div key={i} className="flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <div>
+                          <p className="text-xs font-black text-navy">{step.step}</p>
+                          <p className="text-[10px] text-slate-500">{step.desc}</p>
+                        </div>
+                        {step.ai && <span className="text-[10px] font-black text-blue-600 uppercase">AI 활용</span>}
+                      </div>
+                    ))}
+                  </div>
+               </div>
+
+               <div className="bg-slate-900 p-8 rounded-[2rem] flex flex-col md:flex-row items-center justify-between text-white">
+                  <div className="flex items-center space-x-6">
+                     <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-3xl">🐻</div>
+                     <div>
+                        <p className="text-sm font-black uppercase text-blue-400">HR Coach GomGom</p>
+                        <p className="text-xs text-slate-400">인사를 공학적으로 바꾸는 가장 현명한 방법</p>
+                     </div>
+                  </div>
+                  <div className="text-right text-[10px] space-y-1 text-slate-400 mt-6 md:mt-0">
+                     <p>자료 참조 : Http://youtube.com/@HRCoach</p>
+                     <p>유선문의 : K Prime HR</p>
+                  </div>
+               </div>
+            </div>
+
+            {/* Final CTA */}
             <div className="flex justify-center pt-8">
-               <button 
-                 onClick={onConsult}
-                 className="bg-blue-600 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-blue-700 shadow-2xl shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all"
-               >
-                 무료 ATS진단하기
+               <button onClick={onConsult} className="bg-blue-600 text-white px-16 py-6 rounded-[2rem] font-black text-2xl hover:bg-blue-700 shadow-2xl shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all">
+                 지금 우리 회사 인재도 진단하기
                </button>
             </div>
           </div>
@@ -270,12 +538,10 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
       </div>
 
       <style>{`
-        @keyframes shimmer {
-          100% { transform: translateX(100%); }
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+        @keyframes shimmer { 100% { transform: translateX(100%); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .clip-path-polygon {
+          clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
         }
       `}</style>
     </div>

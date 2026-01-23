@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 interface AIALineupProps {
@@ -11,7 +12,7 @@ export const CATEGORIES = [
     icon: "🏢",
     desc: "조직 구조를 최적화하고 효율적인 팀 운영을 위한 전문 도구입니다.",
     tools: [
-      { title: "조직 구조조정", question: "적정 인원과 직무 체계가 고민인가요?", desc: "성과책임 정합성 감사, 상-하위 역할 중복 분석, 조직 계층 축소 시뮬레이션", highlight: "데이터로 보니 당신 자리는 팀원과 하는 일이 똑같습니다", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" },
+      { title: "조직분석/직무 재분류", question: "적정 인원과 직무 체계가 고민인가요?", desc: "성과책임 정합성 감사, 상-하위 역할 중복 분석, 조직 계층 축소 시뮬레이션", highlight: "데이터로 보니 당신 자리는 팀원과 하는 일이 똑같습니다", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" },
       { title: "가변형 직무설계", question: "직무의 가치를 정확히 측정하고 싶나요?", desc: "하는 일을 입력하면 직무기술서와 보상수준을 즉시 정립해 드립니다", highlight: "어려운 일을 맡으면 직무 등급과 보상이 즉시 오릅니다", img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80" },
       { title: "생산성 분석", question: "우리 조직의 효율성을 객관적으로 측정하고 싶나요?", desc: "HR ROI(인건비 효율성) 분석, 적정 인원(TO) 예측", highlight: "우리 조직은 인당 생산성이 15% 올랐음을 증명합니다", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" }
     ]

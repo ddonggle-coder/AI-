@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PageView } from '../App';
 
@@ -14,10 +15,16 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           alt="Office Background" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/65 backdrop-blur-[1px]"></div>
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center text-white">
+        {/* Live Status Badge */}
+        <div className="inline-flex items-center space-x-2 bg-blue-500/20 border border-blue-400/30 px-4 py-1.5 rounded-full mb-8 backdrop-blur-md animate-pulse">
+          <span className="w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_8px_rgba(96,165,250,0.8)]"></span>
+          <span className="text-blue-200 text-xs font-black uppercase tracking-widest">AIA Engine Real-time Active</span>
+        </div>
+
         <div className="relative mb-12 px-6">
           <h1 className="flex flex-col md:flex-row items-center justify-center select-none italic">
             <span className="inline-block font-['Black_Han_Sans'] text-8xl md:text-[11.5rem] leading-none tracking-tighter neon-white pr-4">
@@ -30,14 +37,14 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           <div className="absolute -inset-x-20 top-1/2 -translate-y-1/2 h-40 bg-blue-500/10 blur-[130px] pointer-events-none"></div>
         </div>
 
-        <p className="text-2xl md:text-4xl font-bold mb-12 opacity-95 tracking-tight drop-shadow-lg">
-          누구나 쉽게 인사컨설팅 수준의 인사를 바로 쓰는 곳
+        <p className="text-2xl md:text-4xl font-bold mb-12 opacity-95 tracking-tight drop-shadow-lg max-w-4xl mx-auto leading-tight">
+          누구나 쉽게 <br className="md:hidden" /> <span className="text-blue-400">인사컨설팅 수준의 인사를 바로 쓰는 곳</span>
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-5">
           <button 
             onClick={() => onNavigate('ats-detail')}
-            className="bg-[#0074D9] text-white px-10 py-5 rounded-lg font-bold text-lg hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/30 hover:scale-105 active:scale-95 transform group overflow-hidden relative"
+            className="bg-[#0074D9] text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-blue-600 transition-all shadow-2xl shadow-blue-500/30 hover:scale-105 active:scale-95 transform group overflow-hidden relative"
           >
             <span className="relative z-10">무료 ATS진단 확인하기</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
@@ -47,9 +54,9 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               const el = document.getElementById('lineup');
               if(el) el.scrollIntoView({ behavior: 'smooth' });
             }} 
-            className="bg-white/5 backdrop-blur-md text-white border border-white/30 px-10 py-5 rounded-lg font-bold text-lg hover:bg-white/15 transition-all hover:scale-105 active:scale-95 transform"
+            className="bg-white/5 backdrop-blur-md text-white border border-white/30 px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/15 transition-all hover:scale-105 active:scale-95 transform"
           >
-            전체 AIA 둘러보기
+            전체 AIA 라인업
           </button>
         </div>
       </div>
