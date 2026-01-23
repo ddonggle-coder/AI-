@@ -162,7 +162,7 @@ const App: React.FC = () => {
                     </thead>
                     <tbody className="text-base">
                       {[
-                        { label: "비용", old: "3,000만원~1억원", cheap: "월 수십만 원", prime: "연 20만원/1인 (최고의 가성비)" },
+                        { label: "비용", old: "3,000만원~1억원", cheap: "월 수십만 원", prime: "연 20만원/1인 (1개AIA당 4만)" },
                         { label: "실행력", old: "보고서 제공 후 종료", cheap: "기능적 툴 제공", prime: "인사 로직 기반의 자동 실행" },
                         { label: "전문성", old: "컨설턴트 역량 의존", cheap: "기초 기능 위주", prime: "표준화된 전문가 지능(AIA)" },
                         { label: "유지보수", old: "추가 비용 발생", cheap: "업데이트 제한적", prime: "성장에 따른 실시간 진화" },
