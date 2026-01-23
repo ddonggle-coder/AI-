@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import AIALineup from './components/AIALineup';
+import UpcomingAIA from './components/UpcomingAIA';
 import AIAgentChat from './components/AIAgentChat';
 import Footer from './components/Footer';
 import ATSDetail from './components/ATSDetail';
@@ -107,6 +108,8 @@ const App: React.FC = () => {
             </section>
 
             <AIALineup onNavigateCategory={navigateToCategory} />
+
+            <UpcomingAIA />
 
             {/* Section: Philosophy */}
             <section id="philosophy" className="py-24 bg-slate-50">
