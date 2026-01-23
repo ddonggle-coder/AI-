@@ -267,7 +267,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                   </div>
                   <div className="mt-8 p-6 bg-slate-50 border border-slate-100 rounded-xl">
                     <p className="text-sm text-slate-600 leading-relaxed">
-                      <span className="font-black text-navy mr-2">■ 종합 적합도 의견:</span> "B (보통) - 정량적 경험 점수는 '보완필요'이나, 개량신약 및 ODT 등 핵심 직무 기술(Skill)의 적합도가 매우 높아 실무 성과는 '우수'가 기대됨."
+                      <span className="font-black text-navy mr-2">■ 종합 적합도 의견:</span> "B (보통) - 정량적 경험 점수는 '보완필요'이나, 개량신약 및 A기술 등 핵심 직무 기술(Skill)의 적합도가 매우 높아 실무 성과는 '우수'가 기대됨."
                     </p>
                   </div>
                 </div>
@@ -293,7 +293,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                       </div>
                       <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
                         <p className="text-xs font-bold text-slate-400 mb-2 uppercase">채용 사유</p>
-                        <p className="text-xs text-slate-600 leading-relaxed">스마트 필름 기반 개량신약 파이프라인 확장과 글로벌 기술 수출 가속화를 위해 충원함.</p>
+                        <p className="text-xs text-slate-600 leading-relaxed">제형개발 관련 ㅇㅇㅇ신약 파이프라인 확장과 글로벌 기술 수출 가속화를 위해 충원함.</p>
                       </div>
                     </div>
                   </div>
@@ -320,7 +320,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                       <tbody>
                         {[
                           { g: "Skill", f: "개량신약 제제연구", s: "주요 파이프라인의 제형 변경 및 특허 회피 능력 필수 (JD 명시)", l: "Critical (100)" },
-                          { g: "Skill", f: "ODF/DDS 연구 기술", s: "핵심 사업인 구강붕해필름(ODF) 및 약물전달시스템 연구 적합성", l: "Very High (95)" },
+                          { g: "Skill", f: "ㅇ 연구 기술", s: "핵심 사업인 ㅇㅇ제형 개발 및 약물전달시스템 연구 적합성", l: "Very High (95)" },
                           { g: "Skill", f: "분석 및 Validation", s: "연구 결과 신뢰성 확보를 위한 분석법 밸리데이션 수행 능력", l: "High (90)" },
                           { g: "Ability", f: "기술이전(Tech Transfer)", s: "개발된 제제 기술을 타 생산처로 이관하고 상용화하는 능력", l: "Med-High (85)" },
                           { g: "핵심역량", f: "성취 지향성", s: "특허 회피 및 제제 안정성 확보라는 어려운 목표를 달성해야 함", l: "Target Lv. 4" },
@@ -347,7 +347,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                         <div className="space-y-8">
                            {[
                              { label: "개량신약 연구", req: 100, cand: 80 },
-                             { label: "ODF/DDS 기술", req: 95, cand: 51.3 },
+                             { label: "ㅇㅇ제형형 기술", req: 95, cand: 51.3 },
                              { label: "분석/Validation", req: 90, cand: 72 },
                              { label: "기술이전", req: 85, cand: 61.2 },
                              { label: "GMP/CTD", req: 85, cand: 40.8 },
@@ -368,8 +368,8 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                      <div className="space-y-4">
                         <p className="text-[11px] text-slate-400 font-bold uppercase mb-4">Analysis Evidence</p>
                         {[
-                          { t: "개량신약 연구", d: "- Telmisartan, Valsartan 등 다수의 프로젝트 주도\n- 특허 회피 및 제형 변경 독자 수행" },
-                          { t: "ODF/DDS 기술", d: "- Tadalafil 구강붕해정(ODT) 연구 경험 보유\n- ODT 기술로 구강 붕해 기전 이해도 높음" },
+                          { t: "개량신약 연구", d: "- ㅇㅇㅇ 등 다수의 프로젝트 주도\n- 특허 회피 및 제형 변경 독자 수행" },
+                          { t: "ㅇㅇㅇㅇ 기술", d: "- ㅇㅇ개발 연구 경험 보유\n- ㅇㅇ 기전 이해도 높음" },
                           { t: "분석/Validation", d: "- 까다로운 분석 조건의 Validation 위탁 수행 완수\n- 기기 분석 및 공정 검증 실무 경험" }
                         ].map((ev, i) => (
                           <div key={i} className="bg-white p-4 border border-slate-100 rounded-xl shadow-sm">
@@ -411,7 +411,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                      </div>
                      <div className="bg-slate-50 p-6 rounded-2xl text-[11px] text-slate-500 space-y-4 leading-relaxed italic">
                         <p>• (S/A) 10개월간 반복 실험을 통해 특허를 회피하고 안정성을 확보. 특허 획득 (Lv.4 수준 명확)</p>
-                        <p>• (S/A) 가족의 사고를 위해 본인의 커리어를 희생하고 2년간 간병. 개인보다 조직(가족) 우선시 증명</p>
+                        <p>• (S/A) ㅇㅇ업무를 수행함에 있어, 개인 시간이나 여건보다 조직 우선시 증명</p>
                         <p>• (S/A) GMP 규정에 따른 Validation 수행 및 시험기기 검증 반복. 정직한 데이터 관리 (Lv.3 적합)</p>
                      </div>
                   </div>
@@ -427,35 +427,13 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                            <tr>
                               <th className="p-4 border border-slate-700">적합도 종합</th>
                               <th className="p-4 border border-slate-700">종합판단</th>
-                              <th className="p-4 border border-slate-700">적합도 의견</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <tr className="bg-slate-50">
-                              <td className="p-4 border border-slate-200 font-bold">직무 경험 적합도</td>
-                              <td className="p-4 border border-slate-200 text-orange-600 font-bold">C (보완필요)</td>
-                              <td className="p-4 border border-slate-200 text-left text-slate-500">3년 미만 경력으로 정량 점수는 낮으나, 기술적 적합도는 최상위 수준임.</td>
-                           </tr>
-                           <tr>
-                              <td className="p-4 border border-slate-200 font-bold">핵심 역량 적합도</td>
-                              <td className="p-4 border border-slate-200 text-blue-600 font-bold">A (우수)</td>
-                              <td className="p-4 border border-slate-200 text-left text-slate-500">연구원으로서 갖춰야 할 집요함과 조직헌신도가 탁월함.</td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="p-8 bg-blue-50/50 border border-blue-100 rounded-[2rem]">
-                      <p className="text-sm font-black text-blue-600 mb-4 flex items-center italic">✨ Strengths</p>
-                      <p className="text-xs text-slate-600 leading-relaxed font-bold">
-                        서울제약의 주요 파이프라인(Tadalafil) 및 ODT 기술에 대한 직접적인 연구 경험은 타 지원자와 차별화되는 강력한 무기입니다.
+                              <th className="p-4 border border-slate-700">ㅇㅇ 기술에 대한 직접적인 연구 경험은 타 지원자와 차별화되는 강력한 무기입니다.
                       </p>
                     </div>
                     <div className="p-8 bg-orange-50/50 border border-orange-100 rounded-[2rem]">
                       <p className="text-sm font-black text-orange-600 mb-4 flex items-center italic">⚠️ Weakness / Advice</p>
                       <p className="text-xs text-slate-600 leading-relaxed font-bold">
-                        2년의 경력 단절로 인해 최신 GMP 규정 업데이트 지식이 부족할 리스크가 있음. 공백기 동안의 학습 노력을 면접 시 확인할 필요가 있음.
+                        1년의 경력 단절로 인해 최신 GMP 규정 업데이트 지식이 부족할 리스크가 있음. 공백기 동안의 학습 노력을 면접 시 확인할 필요가 있음.
                       </p>
                     </div>
                   </div>
@@ -478,12 +456,12 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                         <p className="text-[10px] font-black text-blue-400 mb-4 uppercase">추천 채용공고</p>
                         <ul className="text-xs space-y-4">
                            <li>
-                              <p className="font-bold text-navy">[씨OO바이오] 제제연구팀 신입/경력</p>
-                              <p className="text-slate-500 text-[10px]">사유: ODF 제제 기술 보유자 우대, Tadalafil 실무 연관성 높음.</p>
+                              <p className="font-bold text-navy">[ㅇㅇㅇ바이오] 제제연구팀 경력</p>
+                              <p className="text-slate-500 text-[10px]">사유: ㅇㅇ 기술 보유자 우대, ㅇㅇ 실무 연관성 높음.</p>
                            </li>
                            <li>
-                              <p className="font-bold text-navy">[CO제약] 제제연구소 경력직 채용</p>
-                              <p className="text-slate-500 text-[10px]">사유: 독자적 필름 기술 보유 기업으로 최적 포지션.</p>
+                              <p className="font-bold text-navy">[ㅇㅇ제약] 제제연구소 경력직 채용</p>
+                              <p className="text-slate-500 text-[10px]">사유: 독자적 ㅇㅇㅇ 기술 보유 기업으로 최적 포지션.</p>
                            </li>
                         </ul>
                      </div>
