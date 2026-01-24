@@ -66,7 +66,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
             </div>
           </div>
 
-          {/* Case Study Contents: D제약 언론홍보 리포트(4, 6, 7P) 반영 */}
+          {/* Case Study Contents: ㅇㅇ제약 언론홍보 리포트 반영 */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20 space-y-24 pb-24">
             
             {/* 1. 종합 스코어카드 비교 (4P 기반) */}
@@ -74,7 +74,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
               <div className="mb-12 border-b border-slate-100 pb-8">
                 <span className="text-blue-600 font-black text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full italic">Case Analysis 01</span>
                 <h3 className="text-3xl font-black text-navy mt-4 italic leading-tight">후보자별 종합 스코어카드 비교</h3>
-                <p className="text-slate-400 text-sm mt-2 font-medium">OO제약 언론홍보(PR Manager) 후보자 3인 정량 비교 결과</p>
+                <p className="text-slate-400 text-sm mt-2 font-medium">ㅇㅇ제약 언론홍보(PR Manager) 후보자 3인 정량 비교 결과</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -132,7 +132,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                   {[
                     { t: "문OO: 위기 관리 압승 (Crisis: 100.0)", d: "법학 전공 및 대형 위기 대응 경험을 바탕으로 위기 관리 및 언론 관계 영역에서 독보적인 우위 점함.", icon: "🛡️" },
                     { t: "김OO: AI 활용 독주 (AI Skill: 85.0)", d: "생성형 AI 활용 능력은 최상위 수준이나, 핵심인 산업 이해도와 위기 관리 점수가 낮아 단독 수행에 리스크 존재.", icon: "🤖" },
-                    { t: "조OO: 전략적 기획 우수 (Strategy: 85.5)", d: "마케팅 관점의 브랜드 홍보 전략 수립 능력은 탁월하나, 규제 산업(ETC)에 필수적인 위기 관리 능력 부족.", icon: "📢" }
+                    { t: "조OO: 전략적 기획 우수 (Strategy: 85.5)", d: "마케팅 관점의 브랜드 홍보 전략 수립 능력은 탁월하나, 규제 산업(ㅇㅇ)에 필수적인 위기 관리 능력 부족.", icon: "📢" }
                   ].map((insight, idx) => (
                     <div key={idx} className="flex space-x-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 group hover:bg-white hover:shadow-lg transition-all">
                       <div className="text-2xl">{insight.icon}</div>
@@ -151,7 +151,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
               <div className="mb-12 border-b border-slate-100 pb-8">
                 <span className="text-blue-600 font-black text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full italic">Case Analysis 03</span>
                 <h3 className="text-3xl font-black text-navy mt-4 italic leading-tight">행동 특성 모델 기반 잠재력 평가</h3>
-                <p className="text-slate-400 text-sm mt-2 font-medium">유연성, 정보 수집, 개념적 사고 등 Spencer & Spencer 역량 대조</p>
+                <p className="text-slate-400 text-sm mt-2 font-medium">유연성, 정보 수집, 개념적 사고 등 역량 대조</p>
               </div>
 
               <div className="overflow-x-auto">
@@ -189,7 +189,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                   <span className="mr-2">💡</span> 종합 역량 분석 결과
                 </p>
                 <p className="text-xs text-blue-100 leading-relaxed font-medium">
-                  문OO은 위기 관리에 필수적인 논리/적응력을 완비했습니다. 조OO는 확산력(Impact), 김OO는 기술력(Tech)에 강점이 있으나, 제약 산업의 핵심인 '개념적 사고(위기 대응 논리)' 역량에서 문OO이 유일하게 적합 판정을 받았습니다.
+                  문OO은 위기 관리에 필수적인 논리/적응력을 완비했습니다. 조OO는 확산력(Impact), 김OO는 기술력(Tech)에 강점이 있으나, ㅇㅇ 산업의 핵심인 '개념적 사고(위기 대응 논리)' 역량에서 문OO이 유일하게 적합 판정을 받았습니다.
                 </p>
               </div>
             </section>
@@ -234,7 +234,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                   <div className="text-3xl">📊</div>
                   <div>
                     <h1 className="text-xl font-black tracking-tight uppercase">K Prime Job Fit Report</h1>
-                    <p className="text-[10px] text-slate-400 font-bold tracking-widest uppercase">OO제약 (Seoul Pharma) / 제제연구 (Formulation Researcher)</p>
+                    <p className="text-[10px] text-slate-400 font-bold tracking-widest uppercase">ㅇㅇ제약 / ㅇㅇ연구</p>
                   </div>
                 </div>
                 <div className="text-right">
@@ -267,7 +267,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                   </div>
                   <div className="mt-8 p-6 bg-slate-50 border border-slate-100 rounded-xl">
                     <p className="text-sm text-slate-600 leading-relaxed">
-                      <span className="font-black text-navy mr-2">■ 종합 적합도 의견:</span> "B (보통) - 정량적 경험 점수는 '보완필요'이나, 개량신약 및 A기술 등 핵심 직무 기술(Skill)의 적합도가 매우 높아 실무 성과는 '우수'가 기대됨."
+                      <span className="font-black text-navy mr-2">■ 종합 적합도 의견:</span> "B (보통) - 정량적 경험 점수는 '보완필요'이나, ㅇㅇ신약 및 ㅇㅇ 등 핵심 직무 기술(Skill)의 적합도가 매우 높아 실무 성과는 '우수'가 기대됨."
                     </p>
                   </div>
                 </div>
@@ -280,20 +280,20 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                     <div className="bg-slate-50 p-6 rounded-xl border border-slate-100">
                       <p className="text-xs font-bold text-slate-400 mb-4 uppercase tracking-widest">Company / ORG. / Job Info</p>
                       <ul className="text-xs space-y-3 text-slate-700">
-                        <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Target Industry</span> <span className="font-bold">제약/바이오</span></li>
-                        <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Target Company</span> <span className="font-bold">OO제약 (Seoul Pharma)</span></li>
-                        <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Target Position</span> <span className="font-bold">제제연구 (Formulation Researcher)</span></li>
+                        <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Target Industry</span> <span className="font-bold">ㅇㅇ/바이오</span></li>
+                        <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Target Company</span> <span className="font-bold">ㅇㅇ제약</span></li>
+                        <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Target Position</span> <span className="font-bold">ㅇㅇ연구</span></li>
                         <li className="flex justify-between border-b border-slate-200 pb-2"><span>• Candidate</span> <span className="font-bold">"김OO (경력 34개월)"</span></li>
                       </ul>
                     </div>
                     <div className="grid grid-cols-1 gap-4">
                       <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
                         <p className="text-xs font-bold text-slate-400 mb-2 uppercase">직무 키워드</p>
-                        <p className="text-xs text-slate-600 leading-relaxed">Modified New Drug, Smart Film (ODF), Tech Transfer, GMP Validation</p>
+                        <p className="text-xs text-slate-600 leading-relaxed">ㅇㅇ, ㅇㅇ (ㅇㅇ), Tech Transfer, GMP Validation</p>
                       </div>
                       <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
                         <p className="text-xs font-bold text-slate-400 mb-2 uppercase">채용 사유</p>
-                        <p className="text-xs text-slate-600 leading-relaxed">제형개발 관련 ㅇㅇㅇ신약 파이프라인 확장과 글로벌 기술 수출 가속화를 위해 충원함.</p>
+                        <p className="text-xs text-slate-600 leading-relaxed">ㅇㅇ ㅇㅇ 기반 ㅇㅇ 파이프라인 확장과 글로벌 기술 수출 가속화를 위해 충원함.</p>
                       </div>
                     </div>
                   </div>
@@ -319,8 +319,8 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                       </thead>
                       <tbody>
                         {[
-                          { g: "Skill", f: "개량신약 제제연구", s: "주요 파이프라인의 제형 변경 및 특허 회피 능력 필수 (JD 명시)", l: "Critical (100)" },
-                          { g: "Skill", f: "ㅇ 연구 기술", s: "핵심 사업인 ㅇㅇ제형 개발 및 약물전달시스템 연구 적합성", l: "Very High (95)" },
+                          { g: "Skill", f: "ㅇㅇ 제제연구", s: "주요 파이프라인의 ㅇㅇ 변경 및 특허 회피 능력 필수 (JD 명시)", l: "Critical (100)" },
+                          { g: "Skill", f: "ㅇㅇ/ㅇㅇ 기술", s: "핵심 사업인 ㅇㅇ(ㅇㅇ) 및 ㅇㅇ전달시스템 연구 적합성", l: "Very High (95)" },
                           { g: "Skill", f: "분석 및 Validation", s: "연구 결과 신뢰성 확보를 위한 분석법 밸리데이션 수행 능력", l: "High (90)" },
                           { g: "Ability", f: "기술이전(Tech Transfer)", s: "개발된 제제 기술을 타 생산처로 이관하고 상용화하는 능력", l: "Med-High (85)" },
                           { g: "핵심역량", f: "성취 지향성", s: "특허 회피 및 제제 안정성 확보라는 어려운 목표를 달성해야 함", l: "Target Lv. 4" },
@@ -346,8 +346,8 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                         <p className="text-xs font-bold text-slate-400 mb-8 uppercase text-center">Score Comparison</p>
                         <div className="space-y-8">
                            {[
-                             { label: "개량신약 연구", req: 100, cand: 80 },
-                             { label: "ㅇㅇ제형형 기술", req: 95, cand: 51.3 },
+                             { label: "ㅇㅇ 연구", req: 100, cand: 80 },
+                             { label: "ㅇㅇ/ㅇㅇ 기술", req: 95, cand: 51.3 },
                              { label: "분석/Validation", req: 90, cand: 72 },
                              { label: "기술이전", req: 85, cand: 61.2 },
                              { label: "GMP/CTD", req: 85, cand: 40.8 },
@@ -368,8 +368,8 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                      <div className="space-y-4">
                         <p className="text-[11px] text-slate-400 font-bold uppercase mb-4">Analysis Evidence</p>
                         {[
-                          { t: "개량신약 연구", d: "- ㅇㅇㅇ 등 다수의 프로젝트 주도\n- 특허 회피 및 제형 변경 독자 수행" },
-                          { t: "ㅇㅇㅇㅇ 기술", d: "- ㅇㅇ개발 연구 경험 보유\n- ㅇㅇ 기전 이해도 높음" },
+                          { t: "ㅇㅇ 연구", d: "- ㅇㅇ, ㅇㅇ 등 다수의 프로젝트 주도\n- 특허 회피 및 제형 변경 독자 수행" },
+                          { t: "ㅇㅇ/ㅇㅇ 기술", d: "- ㅇㅇ ㅇㅇ(ㅇㅇ) 연구 경험 보유\n- ㅇㅇ 기술로 ㅇㅇ ㅇㅇ ㅇㅇ 이해도 높음" },
                           { t: "분석/Validation", d: "- 까다로운 분석 조건의 Validation 위탁 수행 완수\n- 기기 분석 및 공정 검증 실무 경험" }
                         ].map((ev, i) => (
                           <div key={i} className="bg-white p-4 border border-slate-100 rounded-xl shadow-sm">
@@ -411,7 +411,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                      </div>
                      <div className="bg-slate-50 p-6 rounded-2xl text-[11px] text-slate-500 space-y-4 leading-relaxed italic">
                         <p>• (S/A) 10개월간 반복 실험을 통해 특허를 회피하고 안정성을 확보. 특허 획득 (Lv.4 수준 명확)</p>
-                        <p>• (S/A) ㅇㅇ업무를 수행함에 있어, 개인 시간이나 여건보다 조직 우선시 증명</p>
+                        <p>• (S/A) 가족의 사고를 위해 본인의 커리어를 희생하고 2년간 간병. 개인보다 조직(가족) 우선시 증명</p>
                         <p>• (S/A) GMP 규정에 따른 Validation 수행 및 시험기기 검증 반복. 정직한 데이터 관리 (Lv.3 적합)</p>
                      </div>
                   </div>
@@ -427,13 +427,35 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                            <tr>
                               <th className="p-4 border border-slate-700">적합도 종합</th>
                               <th className="p-4 border border-slate-700">종합판단</th>
-                              <th className="p-4 border border-slate-700">ㅇㅇ 기술에 대한 직접적인 연구 경험은 타 지원자와 차별화되는 강력한 무기입니다.
+                              <th className="p-4 border border-slate-700">적합도 의견</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr className="bg-slate-50">
+                              <td className="p-4 border border-slate-200 font-bold">직무 경험 적합도</td>
+                              <td className="p-4 border border-slate-200 text-orange-600 font-bold">C (보완필요)</td>
+                              <td className="p-4 border border-slate-200 text-left text-slate-500">3년 미만 경력으로 정량 점수는 낮으나, 기술적 적합도는 최상위 수준임.</td>
+                           </tr>
+                           <tr>
+                              <td className="p-4 border border-slate-200 font-bold">핵심 역량 적합도</td>
+                              <td className="p-4 border border-slate-200 text-blue-600 font-bold">A (우수)</td>
+                              <td className="p-4 border border-slate-200 text-left text-slate-500">연구원으로서 갖춰야 할 집요함과 조직헌신도가 탁월함.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-8 bg-blue-50/50 border border-blue-100 rounded-[2rem]">
+                      <p className="text-sm font-black text-blue-600 mb-4 flex items-center italic">✨ Strengths</p>
+                      <p className="text-xs text-slate-600 leading-relaxed font-bold">
+                        ㅇㅇ제약의 주요 파이프라인(ㅇㅇ) 및 ㅇㅇ 기술에 대한 직접적인 연구 경험은 타 지원자와 차별화되는 강력한 무기입니다.
                       </p>
                     </div>
                     <div className="p-8 bg-orange-50/50 border border-orange-100 rounded-[2rem]">
                       <p className="text-sm font-black text-orange-600 mb-4 flex items-center italic">⚠️ Weakness / Advice</p>
                       <p className="text-xs text-slate-600 leading-relaxed font-bold">
-                        1년의 경력 단절로 인해 최신 GMP 규정 업데이트 지식이 부족할 리스크가 있음. 공백기 동안의 학습 노력을 면접 시 확인할 필요가 있음.
+                        2년의 경력 단절로 인해 최신 GMP 규정 업데이트 지식이 부족할 리스크가 있음. 공백기 동안의 학습 노력을 면접 시 확인할 필요가 있음.
                       </p>
                     </div>
                   </div>
@@ -456,12 +478,12 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                         <p className="text-[10px] font-black text-blue-400 mb-4 uppercase">추천 채용공고</p>
                         <ul className="text-xs space-y-4">
                            <li>
-                              <p className="font-bold text-navy">[ㅇㅇㅇ바이오] 제제연구팀 경력</p>
+                              <p className="font-bold text-navy">[씨ㅇㅇ바이오] 제제연구팀 신입/경력</p>
                               <p className="text-slate-500 text-[10px]">사유: ㅇㅇ 기술 보유자 우대, ㅇㅇ 실무 연관성 높음.</p>
                            </li>
                            <li>
-                              <p className="font-bold text-navy">[ㅇㅇ제약] 제제연구소 경력직 채용</p>
-                              <p className="text-slate-500 text-[10px]">사유: 독자적 ㅇㅇㅇ 기술 보유 기업으로 최적 포지션.</p>
+                              <p className="font-bold text-navy">[CO제약] ㅇㅇ연구소 경력직 채용</p>
+                              <p className="text-slate-500 text-[10px]">사유: 독자적 ㅇㅇ 기술 보유 기업으로 최적 포지션.</p>
                            </li>
                         </ul>
                      </div>
@@ -475,7 +497,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
                       { step: "1. 내상태 정리", desc: "경력 특징, 강약점, 적합 직무 인지 여부" },
-                      { step: "2. 타겟 탐색", desc: "적합직무, 기업, 분야의 명확화", ai: true },
+                      { step: "2. 타겟 탐색", desc: "적합 직무, 기업, 분야의 명확화", ai: true },
                       { step: "7. 대면면접 전략", desc: "효과적인 어필 포인트 대비", ai: true },
                       { step: "9. 협상 전략", desc: "처우 및 입사 시기 조율", ai: true }
                     ].map((step, i) => (

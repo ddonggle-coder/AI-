@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 interface ConsultationFormProps {
@@ -58,11 +59,66 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ onBack }) => {
                   <div className="flex justify-between items-start mb-10">
                     <div>
                       <h3 className="text-2xl font-black text-blue-900 mb-1">K Prime Job Fit Report</h3>
-                      <p className="text-xs text-slate-400 font-bold tracking-widest uppercase">ATS-S/D 202542 | OO제약(Anonymized)</p>
+                      <p className="text-xs text-slate-400 font-bold tracking-widest uppercase">ATS-S/D 202542 | ㅇㅇ제약</p>
                     </div>
                     <div className="text-right">
                       <p className="text-xs font-bold text-slate-400">김OO 지원자</p>
-                      <p className="text-[10pㅇ 기술", req: 95, cand: 51 },
+                      <p className="text-[10px] text-slate-300">2025-12-15</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 mb-8">
+                    <h4 className="text-sm font-bold text-navy mb-6 flex items-center">
+                      <span className="mr-2">📊</span> Scorecard Summary
+                    </h4>
+                    <div className="grid grid-cols-3 gap-6">
+                      <div className="bg-white p-5 rounded-xl border border-slate-100 text-center shadow-sm">
+                        <p className="text-[10px] font-bold text-slate-400 mb-1">직무 경험 적합도</p>
+                        <p className="text-2xl font-black text-blue-600">67.1</p>
+                        <p className="text-[10px] text-slate-400 mt-1">대체로 부적합</p>
+                      </div>
+                      <div className="bg-white p-5 rounded-xl border border-slate-100 text-center shadow-sm">
+                        <p className="text-[10px] font-bold text-slate-400 mb-1">핵심 역량 적합도</p>
+                        <p className="text-2xl font-black text-blue-600">86.3</p>
+                        <p className="text-[10px] text-slate-400 mt-1">부분 적합</p>
+                      </div>
+                      <div className="bg-blue-900 p-5 rounded-xl text-center shadow-lg transform scale-110">
+                        <p className="text-[10px] font-bold text-blue-200 mb-1">TOTAL FIT SCORE</p>
+                        <p className="text-3xl font-black text-white">76.7</p>
+                        <div className="mt-2 bg-orange-500 text-[10px] font-black py-0.5 rounded-full text-white">부분 적합</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                      <p className="text-[10px] font-bold text-slate-400 mb-2">Company / Job</p>
+                      <ul className="text-[11px] space-y-1 text-slate-600">
+                        <li>• Industry: ㅇㅇ/바이오</li>
+                        <li>• Position: ㅇㅇ연구</li>
+                        <li>• Candidate: 김OO (경력 34개월)</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                      <p className="text-[10px] font-bold text-slate-400 mb-2">Job Keywords</p>
+                      <div className="flex flex-wrap gap-1">
+                        {['ㅇㅇ', 'ㅇㅇ', 'ㅇㅇ', 'GMP'].map(k => (
+                          <span key={k} className="px-2 py-0.5 bg-white border border-slate-200 rounded text-[9px] text-slate-500">{k}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* PDF Page 2 Simulation: Comparison Graph */}
+                <div className="border-b border-slate-100 pb-12">
+                  <h4 className="text-sm font-bold text-navy mb-8 flex items-center">
+                    <span className="mr-2">📈</span> Job Experience Fit (Score Comparison)
+                  </h4>
+                  <div className="space-y-6">
+                    {[
+                      { label: "ㅇㅇ 연구", req: 100, cand: 80 },
+                      { label: "ㅇㅇ/ㅇㅇ 기술", req: 95, cand: 51 },
                       { label: "분석/Validation", req: 90, cand: 72 },
                       { label: "기술이전(Tech Transfer)", req: 85, cand: 61 },
                     ].map((bar, i) => (
@@ -91,7 +147,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ onBack }) => {
                         <span className="mr-2">✨</span> Strengths
                       </p>
                       <p className="text-[11px] text-slate-600 leading-relaxed">
-                        "Strategic Fit: ㅇㅇㅇ최신 임상개발에 대한 직접적인 연구 경험은 타 지원자와 차별화되는 강력한 무기입니다."
+                        "Strategic Fit: 특정 ㅇㅇ전달 기술(ㅇㅇ)에 대한 직접적인 연구 경험은 타 지원자와 차별화되는 강력한 무기입니다."
                       </p>
                     </div>
                     <div className="p-5 bg-orange-50 border border-orange-100 rounded-2xl">
@@ -99,7 +155,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ onBack }) => {
                         <span className="mr-2">⚠️</span> Weakness / Advice
                       </p>
                       <p className="text-[11px] text-slate-600 leading-relaxed">
-                        "Career Gap Risk: 1년의 경력 단절로 인한 최신 GMP 규정 업데이트 여부를 면접 시 검증할 필요가 있습니다."
+                        "Career Risk: 일정 기간의 경력 단절로 인한 최신 지식 업데이트 여부를 면접 시 검증할 필요가 있습니다."
                       </p>
                     </div>
                   </div>
