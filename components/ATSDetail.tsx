@@ -475,7 +475,7 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
                       { step: "1. 내상태 정리", desc: "경력 특징, 강약점, 적합 직무 인지 여부" },
-                      { step: "2. 타겟 탐색", desc: "적합 직무, 기업, 분야의 명확화", ai: true },
+                      { step: "2. 타겟 탐색", desc: "적합직무, 기업, 분야의 명확화", ai: true },
                       { step: "7. 대면면접 전략", desc: "효과적인 어필 포인트 대비", ai: true },
                       { step: "9. 협상 전략", desc: "처우 및 입사 시기 조율", ai: true }
                     ].map((step, i) => (
