@@ -4,9 +4,10 @@ import React, { useState } from 'react';
 interface ATSDetailProps {
   onBack: () => void;
   onConsult: () => void;
+  onActivateDify?: () => void;
 }
 
-const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
+const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult, onActivateDify }) => {
   const [isDiagnosing, setIsDiagnosing] = useState(false);
   const [showReport, setShowReport] = useState(false);
 
@@ -55,13 +56,25 @@ const ATSDetail: React.FC<ATSDetailProps> = ({ onBack, onConsult }) => {
               </div>
 
               {!isDiagnosing && (
-                <button 
-                  onClick={handleDiagnose}
-                  className="group relative bg-[#0074D9] text-white px-12 py-6 rounded-2xl font-bold text-2xl hover:bg-blue-600 transition-all shadow-2xl shadow-blue-500/40 hover:scale-105 active:scale-95 overflow-hidden"
-                >
-                  <span className="relative z-10">개인별 적합도 상세결과 보기</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
-                </button>
+                <div className="flex flex-col items-center space-y-4">
+                  <button 
+                    onClick={handleDiagnose}
+                    className="group relative bg-[#0074D9] text-white px-12 py-6 rounded-2xl font-bold text-2xl hover:bg-blue-600 transition-all shadow-2xl shadow-blue-500/40 hover:scale-105 active:scale-95 overflow-hidden"
+                  >
+                    <span className="relative z-10">개인별 적합도 상세결과 보기</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                  </button>
+                  
+                  {/* New Test Button */}
+                  <button 
+                    onClick={() => {
+                      if(onActivateDify) onActivateDify();
+                    }}
+                    className="group relative bg-white/10 backdrop-blur-md text-white border border-white/30 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all shadow-xl hover:scale-105 active:scale-95"
+                  >
+                    <span>개인별 적합도 진단하기(테스트용)</span>
+                  </button>
+                </div>
               )}
             </div>
           </div>

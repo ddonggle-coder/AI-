@@ -16,6 +16,8 @@ export type PageView = 'home' | 'ats-detail' | 'aia-info' | 'category-detail' | 
 const App: React.FC = () => {
   const [view, setView] = useState<PageView>('home');
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(0);
+  const [isDifyActive, setIsDifyActive] = useState(false);
+  const [isDifyOpen, setIsDifyOpen] = useState(false);
 
   // Scroll to top on view change
   useEffect(() => {
@@ -30,7 +32,16 @@ const App: React.FC = () => {
   const renderContent = () => {
     switch (view) {
       case 'ats-detail':
-        return <ATSDetail onBack={() => setView('home')} onConsult={() => setView('consultation')} />;
+        return (
+          <ATSDetail 
+            onBack={() => setView('home')} 
+            onConsult={() => setView('consultation')} 
+            onActivateDify={() => {
+              setIsDifyActive(true);
+              setIsDifyOpen(true);
+            }}
+          />
+        );
       case 'aia-info':
         return <AIADetail onBack={() => setView('home')} onConsult={() => setView('consultation')} />;
       case 'category-detail':
@@ -193,6 +204,56 @@ const App: React.FC = () => {
         {renderContent()}
       </main>
       <Footer onNavigate={setView} />
+
+      {/* Global Dify Chatbot Widget */}
+      {isDifyActive && (
+        <div className="fixed bottom-6 right-6 z-[200] flex flex-col items-end">
+          {isDifyOpen && (
+            <div className="mb-4 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden w-[90vw] md:w-[450px] h-[700px] flex flex-col animate-[fadeIn_0.3s_ease-out]">
+              <div className="bg-navy p-4 text-white flex justify-between items-center">
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                  <span className="font-bold text-sm">AIA 정밀 진단 (테스트용)</span>
+                </div>
+                <button 
+                  onClick={() => setIsDifyOpen(false)}
+                  className="p-1 hover:bg-white/10 rounded-lg transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div className="flex-1 w-full h-full bg-white">
+                <iframe
+                  src="https://udify.app/chatbot/yvAkoT501KdtW3vZ"
+                  style={{ width: '100%', height: '100%', minHeight: '100%' }}
+                  frameBorder="0"
+                  allow="microphone"
+                  title="Dify Chatbot"
+                ></iframe>
+              </div>
+            </div>
+          )}
+          <button
+            onClick={() => setIsDifyOpen(!isDifyOpen)}
+            className="w-16 h-16 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center text-3xl hover:scale-110 active:scale-95 transition-all animate-bounce"
+            title="AIA 진단 챗봇"
+          >
+            {isDifyOpen ? (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            ) : (
+              <span className="leading-none">🤖</span>
+            )}
+          </button>
+        </div>
+      )}
+      
+      <style>{`
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      `}</style>
     </div>
   );
 };
