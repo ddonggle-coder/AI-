@@ -10,8 +10,9 @@ import ATSDetail from './components/ATSDetail';
 import AIADetail from './components/AIADetail';
 import CategoryDetail from './components/CategoryDetail';
 import ConsultationForm from './components/ConsultationForm';
+import ToolList from './components/ToolList';
 
-export type PageView = 'home' | 'ats-detail' | 'aia-info' | 'category-detail' | 'consultation';
+export type PageView = 'home' | 'ats-detail' | 'aia-info' | 'category-detail' | 'consultation' | 'tool-list';
 
 const App: React.FC = () => {
   const [view, setView] = useState<PageView>('home');
@@ -54,6 +55,8 @@ const App: React.FC = () => {
         );
       case 'consultation':
         return <ConsultationForm onBack={() => setView('home')} />;
+      case 'tool-list':
+        return <ToolList onBack={() => setView('home')} onConsult={() => setView('consultation')} />;
       case 'home':
       default:
         return (
@@ -209,11 +212,11 @@ const App: React.FC = () => {
       {isDifyActive && (
         <div className="fixed bottom-6 right-6 z-[200] flex flex-col items-end">
           {isDifyOpen && (
-            <div className="mb-4 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden w-[90vw] md:w-[450px] h-[700px] flex flex-col animate-[fadeIn_0.3s_ease-out]">
+            <div className="mb-4 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden w-[95vw] md:w-[600px] h-[800px] flex flex-col animate-[fadeIn_0.3s_ease-out]">
               <div className="bg-navy p-4 text-white flex justify-between items-center">
                 <div className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  <span className="font-bold text-sm">AIA 정밀 진단 (테스트용)</span>
+                  <span className="font-bold text-sm">AIA 정밀 진단 도구</span>
                 </div>
                 <button 
                   onClick={() => setIsDifyOpen(false)}
@@ -224,10 +227,10 @@ const App: React.FC = () => {
                   </svg>
                 </button>
               </div>
-              <div className="flex-1 w-full h-full bg-white">
+              <div className="flex-1 w-full h-full bg-white overflow-hidden">
                 <iframe
                   src="https://udify.app/workflow/0Vtq6IJGl7u76aIi"
-                  style={{ width: '100%', height: '100%', border: 'none' }}
+                  style={{ width: '130%', height: '750px', border: 'none' }}
                   title="Dify Workflow"
                 ></iframe>
               </div>

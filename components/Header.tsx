@@ -10,9 +10,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: '초기화면', view: 'home' as PageView },
+    { label: '홈', view: 'home' as PageView },
     { label: 'HR AIA란?', view: 'aia-info' as PageView },
     { label: '회사철학', href: '#philosophy' },
+    { label: '전체 AI도구 리스트', view: 'tool-list' as PageView },
   ];
 
   const handleNavClick = (view: PageView) => {
@@ -47,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
                      if(el) el.scrollIntoView({ behavior: 'smooth' });
                    }
                 }}
-                className="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors tracking-tight"
+                className={`text-sm font-bold transition-colors tracking-tight ${item.label === '전체 AI도구 리스트' ? 'text-blue-600' : 'text-slate-500 hover:text-blue-600'}`}
               >
                 {item.label}
               </button>
