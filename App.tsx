@@ -226,11 +226,9 @@ const App: React.FC = () => {
               </div>
               <div className="flex-1 w-full h-full bg-white">
                 <iframe
-                  src="https://udify.app/chatbot/yvAkoT501KdtW3vZ"
-                  style={{ width: '100%', height: '100%', minHeight: '100%' }}
-                  frameBorder="0"
-                  allow="microphone"
-                  title="Dify Chatbot"
+                  src="https://udify.app/workflow/0Vtq6IJGl7u76aIi"
+                  style={{ width: '100%', height: '100%', border: 'none' }}
+                  title="Dify Workflow"
                 ></iframe>
               </div>
             </div>
@@ -238,7 +236,7 @@ const App: React.FC = () => {
           <button
             onClick={() => setIsDifyOpen(!isDifyOpen)}
             className="w-16 h-16 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center text-3xl hover:scale-110 active:scale-95 transition-all animate-bounce"
-            title="AIA 진단 챗봇"
+            title="AIA 진단 도구"
           >
             {isDifyOpen ? (
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
