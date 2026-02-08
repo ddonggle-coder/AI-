@@ -11,6 +11,7 @@ import AIADetail from './components/AIADetail';
 import CategoryDetail from './components/CategoryDetail';
 import ConsultationForm from './components/ConsultationForm';
 import ToolList from './components/ToolList';
+import FreeTrialModal from './components/FreeTrialModal';
 
 export type PageView = 'home' | 'ats-detail' | 'aia-info' | 'category-detail' | 'consultation' | 'tool-list';
 
@@ -19,11 +20,34 @@ const App: React.FC = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(0);
   const [isDifyActive, setIsDifyActive] = useState(false);
   const [isDifyOpen, setIsDifyOpen] = useState(false);
+  const [showFreeTrial, setShowFreeTrial] = useState(false);
 
   // Scroll to top on view change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [view]);
+
+  // Handle Free Trial Modal visibility
+  useEffect(() => {
+    const hideUntil = localStorage.getItem('hideFreeTrialUntil');
+    const now = new Date().getTime();
+    
+    if (!hideUntil || now > parseInt(hideUntil)) {
+      // Show modal after a short delay for better UX
+      const timer = setTimeout(() => {
+        if (view === 'home') {
+          setShowFreeTrial(true);
+        }
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [view]);
+
+  const handleHideFreeTrialToday = () => {
+    const tomorrow = new Date();
+    tomorrow.setHours(24, 0, 0, 0);
+    localStorage.setItem('hideFreeTrialUntil', tomorrow.getTime().toString());
+  };
 
   const navigateToCategory = (id: number) => {
     setSelectedCategoryId(id);
@@ -56,7 +80,16 @@ const App: React.FC = () => {
       case 'consultation':
         return <ConsultationForm onBack={() => setView('home')} />;
       case 'tool-list':
-        return <ToolList onBack={() => setView('home')} onConsult={() => setView('consultation')} />;
+        return (
+          <ToolList 
+            onBack={() => setView('home')} 
+            onConsult={() => setView('consultation')}
+            onActivateDify={() => {
+              setIsDifyActive(true);
+              setIsDifyOpen(true);
+            }}
+          />
+        );
       case 'home':
       default:
         return (
@@ -68,7 +101,7 @@ const App: React.FC = () => {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">왜 기존 방식은 <span className="text-blue-400">실패</span>했을까요?</h2>
-                  <p className="text-slate-400 text-lg">K Prime이 제시하는 '인사의 도구화' 솔루션</p>
+                  <p className="text-slate-400 text-xl font-medium">K Prime이 제시하는 '인사의 도구화' 솔루션</p>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
@@ -81,13 +114,13 @@ const App: React.FC = () => {
                       </div>
                       <h3 className="text-3xl font-bold">기존의 한계</h3>
                     </div>
-                    <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                    <p className="text-xl text-slate-300 mb-8 leading-relaxed">
                       <span className="text-red-400 font-bold">고가 컨설팅</span>은 보고서 작성 후 실행 단계에서 멈추고,<br />
                       <span className="text-red-400 font-bold">범용 솔루션</span>은 우리 회사만의 특수성을 담지 못합니다.
                     </p>
                     <ul className="space-y-4">
                       {["현실과 동떨어진 수천만 원짜리 보고서", "인사 로직이 없는 단순 데이터 기록기", "결국 담당자의 수작업으로 돌아가는 운영"].map((item, idx) => (
-                        <li key={idx} className="flex items-center space-x-3 text-slate-400 bg-white/5 p-4 rounded-xl">
+                        <li key={idx} className="flex items-center space-x-3 text-slate-300 bg-white/5 p-5 rounded-xl text-lg font-medium">
                           <span className="text-red-500 font-bold">✕</span>
                           <span>{item}</span>
                         </li>
@@ -104,13 +137,13 @@ const App: React.FC = () => {
                       </div>
                       <h3 className="text-3xl font-bold">AI인사팀의 해답</h3>
                     </div>
-                    <p className="text-lg text-blue-50 mb-8 leading-relaxed">
+                    <p className="text-xl text-blue-50 mb-8 leading-relaxed">
                       복잡한 HR 로직은 <span className="font-bold">AIA가 자동화</span>합니다.<br />
                       당신은 <span className="font-bold">최종 의사결정</span>에만 집중하세요. 전문가의 지능을 도구로 드립니다.
                     </p>
                     <ul className="space-y-4">
                       {["검증된 컨설팅 방법론의 알고리즘화", "즉시 실행 가능한 실무 중심 리포트", "조직 성장에 맞춰 진화하는 다이내믹 엔진"].map((item, idx) => (
-                        <li key={idx} className="flex items-center space-x-3 text-white bg-white/10 p-4 rounded-xl">
+                        <li key={idx} className="flex items-center space-x-3 text-white bg-white/10 p-5 rounded-xl text-lg font-medium">
                           <span className="font-bold">✓</span>
                           <span>{item}</span>
                         </li>
@@ -130,12 +163,12 @@ const App: React.FC = () => {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-5xl font-black text-navy mb-4">서비스 소개</h2>
-                  <p className="text-slate-500 text-lg">K Prime HR이 추구하는 전문성의 민주화</p>
+                  <p className="text-slate-500 text-xl">K Prime HR이 추구하는 전문성의 민주화</p>
                 </div>
 
                 <div className="text-center mb-20">
                    <h3 className="text-4xl font-black text-navy mb-2">K Prime <span className="text-blue-600">철학</span></h3>
-                   <p className="text-slate-400 italic">"복잡함을 단순함으로, 전문성을 일상으로"</p>
+                   <p className="text-slate-400 text-xl italic font-medium">"복잡함을 단순함으로, 전문성을 일상으로"</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -149,8 +182,8 @@ const App: React.FC = () => {
                         {item.icon}
                       </div>
                       <h4 className="text-2xl font-black text-navy mb-2">{item.title}</h4>
-                      <p className="text-blue-600 font-bold text-sm mb-6">{item.subtitle}</p>
-                      <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                      <p className="text-blue-600 font-bold text-base mb-6">{item.subtitle}</p>
+                      <p className="text-slate-500 text-base leading-relaxed">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -162,19 +195,19 @@ const App: React.FC = () => {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-4xl font-bold text-[#0A192F] mb-4">왜 AI인사팀인가?</h2>
-                  <p className="text-slate-500">기존의 비효율을 해결하는 가장 스마트한 선택</p>
+                  <p className="text-slate-500 text-xl">기존의 비효율을 해결하는 가장 스마트한 선택</p>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-center border-separate border-spacing-0 rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-                    <thead className="bg-slate-50 text-slate-500 text-base font-bold">
+                    <thead className="bg-slate-50 text-slate-600 text-lg font-bold">
                       <tr>
-                        <th className="p-6 border-b border-slate-200">구분</th>
-                        <th className="p-6 border-b border-slate-200">고가 컨설팅</th>
-                        <th className="p-6 border-b border-slate-200">범용 SaaS</th>
-                        <th className="p-6 border-b border-slate-200 bg-blue-50 text-blue-600">AI인사팀.com</th>
+                        <th className="p-8 border-b border-slate-200">구분</th>
+                        <th className="p-8 border-b border-slate-200">고가 컨설팅</th>
+                        <th className="p-8 border-b border-slate-200">범용 SaaS</th>
+                        <th className="p-8 border-b border-slate-200 bg-blue-50 text-blue-600">AI인사팀.com</th>
                       </tr>
                     </thead>
-                    <tbody className="text-base">
+                    <tbody className="text-lg">
                       {[
                         { label: "비용", old: "3,000만원~1억원", cheap: "월 수십만 원", prime: "전체AIA 사용 시 20만원/년,1인 또는 단일AIA 사용 시 각 4만원/년,1인" },
                         { label: "실행력", old: "보고서 제공 후 종료", cheap: "기능적 툴 제공", prime: "인사 로직 기반의 자동 실행" },
@@ -182,10 +215,10 @@ const App: React.FC = () => {
                         { label: "유지보수", old: "추가 비용 발생", cheap: "업데이트 제한적", prime: "성장에 따른 실시간 진화" },
                       ].map((row, idx) => (
                         <tr key={idx} className="hover:bg-slate-50 transition-colors">
-                          <td className="p-6 border-b border-slate-100 font-bold text-slate-700">{row.label}</td>
-                          <td className="p-6 border-b border-slate-100 text-slate-500">{row.old}</td>
-                          <td className="p-6 border-b border-slate-100 text-slate-500">{row.cheap}</td>
-                          <td className="p-6 border-b border-slate-100 font-bold text-blue-700 bg-blue-50/30">{row.prime}</td>
+                          <td className="p-8 border-b border-slate-100 font-bold text-slate-800">{row.label}</td>
+                          <td className="p-8 border-b border-slate-100 text-slate-600">{row.old}</td>
+                          <td className="p-8 border-b border-slate-100 text-slate-600">{row.cheap}</td>
+                          <td className="p-8 border-b border-slate-100 font-bold text-blue-800 bg-blue-50/30">{row.prime}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -206,33 +239,49 @@ const App: React.FC = () => {
       <main className="flex-grow">
         {renderContent()}
       </main>
+      <Header onNavigate={setView} /> {/* Removed duplicate Footer, assuming it should only be at the bottom */}
       <Footer onNavigate={setView} />
+
+      {/* Free Trial Modal Overlay */}
+      {showFreeTrial && (
+        <FreeTrialModal 
+          onClose={() => setShowFreeTrial(false)} 
+          onHideToday={handleHideFreeTrialToday}
+          onNavigate={setView}
+        />
+      )}
 
       {/* Global Dify Chatbot Widget */}
       {isDifyActive && (
         <div className="fixed bottom-6 right-6 z-[200] flex flex-col items-end">
           {isDifyOpen && (
-            <div className="mb-4 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden w-[95vw] md:w-[600px] h-[800px] flex flex-col animate-[fadeIn_0.3s_ease-out]">
+            <div className="mb-4 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden w-[95vw] md:w-[1100px] h-[850px] flex flex-col animate-[fadeIn_0.3s_ease-out]">
               <div className="bg-navy p-4 text-white flex justify-between items-center">
                 <div className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  <span className="font-bold text-sm">AIA 정밀 진단 도구</span>
+                  <span className="font-bold text-base">AIA 정밀 진단 도구</span>
                 </div>
                 <button 
                   onClick={() => setIsDifyOpen(false)}
                   className="p-1 hover:bg-white/10 rounded-lg transition-colors"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
-              <div className="flex-1 w-full h-full bg-white overflow-hidden">
+              <div className="flex-1 w-full bg-white overflow-hidden relative">
                 <iframe
                   src="https://udify.app/workflow/0Vtq6IJGl7u76aIi"
-                  style={{ width: '130%', height: '750px', border: 'none' }}
-                  title="Dify Workflow"
+                  style={{ width: '100%', height: '100%', minHeight: '700px', border: 'none' }}
+                  title="AIA Precision Diagnosis Tool"
+                  allow="microphone"
                 ></iframe>
+              </div>
+              <div className="bg-blue-50 p-5 border-t border-blue-100">
+                 <p className="text-blue-900 text-center text-sm font-bold leading-relaxed">
+                   💡 회사 직무요건(모집요강) 파일과 지원자 이력서 파일을<br />업로드 한 후 실행을 눌러 주세요
+                 </p>
               </div>
             </div>
           )}

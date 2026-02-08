@@ -59,8 +59,8 @@ const AIALineup: React.FC<AIALineupProps> = ({ onNavigateCategory }) => {
     <section id="lineup" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-black text-navy mb-4">인사기능별 AIA</h2>
-          <p className="text-slate-500 text-lg">12가지 전문 AI 도구로 채용, 평가, 보상, 조직 관리의 모든 영역을 전문가 수준으로 자동화하세요</p>
+          <h2 className="text-4xl font-black text-navy mb-4 italic uppercase">인사기능별 AIA</h2>
+          <p className="text-slate-500 text-xl font-medium">12가지 전문 AI 도구로 채용, 평가, 보상, 조직 관리의 모든 영역을 전문가 수준으로 자동화하세요</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -68,13 +68,13 @@ const AIALineup: React.FC<AIALineupProps> = ({ onNavigateCategory }) => {
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
-              className={`px-8 py-4 rounded-xl text-sm font-bold flex items-center space-x-2 transition-all ${
+              className={`px-8 py-5 rounded-2xl text-base font-bold flex items-center space-x-3 transition-all ${
                 activeTab === cat.id 
-                  ? 'bg-blue-600 text-white shadow-xl shadow-blue-500/20 translate-y-[-2px]' 
+                  ? 'bg-blue-600 text-white shadow-2xl shadow-blue-500/30 translate-y-[-2px]' 
                   : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200'
               }`}
             >
-              <span>{cat.icon}</span>
+              <span className="text-xl">{cat.icon}</span>
               <span>{cat.name}</span>
             </button>
           ))}
@@ -83,7 +83,7 @@ const AIALineup: React.FC<AIALineupProps> = ({ onNavigateCategory }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {CATEGORIES[activeTab].tools.map((tool, idx) => (
             <div key={idx} className="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all group">
-              <div className="h-52 overflow-hidden bg-slate-100">
+              <div className="h-56 overflow-hidden bg-slate-100">
                  <img 
                     src={tool.img} 
                     alt={tool.title} 
@@ -93,13 +93,13 @@ const AIALineup: React.FC<AIALineupProps> = ({ onNavigateCategory }) => {
                     }}
                  />
               </div>
-              <div className="p-8">
-                <h4 className="text-2xl font-bold text-navy mb-2">{tool.title}</h4>
-                <p className="text-blue-600 text-xs font-bold mb-4">{tool.question}</p>
-                <p className="text-slate-500 text-sm leading-relaxed mb-8 min-h-[3rem]">{tool.desc}</p>
+              <div className="p-10">
+                <h4 className="text-2xl font-black text-navy mb-3">{tool.title}</h4>
+                <p className="text-blue-600 text-sm font-bold mb-5 italic">"{tool.question}"</p>
+                <p className="text-slate-500 text-base leading-relaxed mb-10 min-h-[4rem]">{tool.desc}</p>
                 <button 
                   onClick={() => onNavigateCategory(activeTab)}
-                  className="w-full py-3.5 bg-slate-50 text-navy border border-slate-200 rounded-xl font-bold text-sm hover:bg-navy hover:text-white transition-all"
+                  className="w-full py-4.5 bg-slate-50 text-navy border border-slate-200 rounded-2xl font-black text-base hover:bg-navy hover:text-white transition-all shadow-sm"
                 >
                   자세히 보기
                 </button>

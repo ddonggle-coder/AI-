@@ -32,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               </div>
               <div className="ml-3 flex flex-col items-start">
                 <span className="text-xl font-black tracking-tighter text-[#0A192F] leading-none">AI인사팀</span>
-                <span className="text-[10px] font-bold text-blue-600 tracking-[0.2em] mt-1 leading-none uppercase">K Prime HR</span>
+                <span className="text-[12px] font-bold text-blue-600 tracking-[0.2em] mt-1 leading-none uppercase">K Prime HR</span>
               </div>
             </button>
           </div>
@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
                      if(el) el.scrollIntoView({ behavior: 'smooth' });
                    }
                 }}
-                className={`text-sm font-bold transition-colors tracking-tight ${item.label === '전체 AI도구 리스트' ? 'text-blue-600' : 'text-slate-500 hover:text-blue-600'}`}
+                className={`text-base font-bold transition-colors tracking-tight ${item.label === '전체 AI도구 리스트' ? 'text-blue-600' : 'text-slate-500 hover:text-blue-600'}`}
               >
                 {item.label}
               </button>
@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
           <div className="hidden md:flex items-center space-x-4">
             <button 
               onClick={() => handleNavClick('consultation')}
-              className="bg-blue-600 text-white px-7 py-3 rounded-2xl text-sm font-black shadow-lg shadow-blue-500/20 hover:bg-blue-700 hover:scale-105 active:scale-95 transition-all"
+              className="bg-blue-600 text-white px-7 py-3 rounded-2xl text-base font-black shadow-lg shadow-blue-500/20 hover:bg-blue-700 hover:scale-105 active:scale-95 transition-all"
             >
               무료 도입 상담
             </button>
@@ -82,14 +82,14 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               <button
                 key={item.label}
                 onClick={() => item.view ? handleNavClick(item.view) : null}
-                className="text-left text-lg font-bold text-slate-700"
+                className="text-left text-xl font-bold text-slate-700"
               >
                 {item.label}
               </button>
             ))}
             <button 
               onClick={() => handleNavClick('consultation')}
-              className="w-full bg-blue-600 text-white py-4 rounded-2xl font-black text-center shadow-xl shadow-blue-500/20"
+              className="w-full bg-blue-600 text-white py-4 rounded-2xl font-black text-center shadow-xl shadow-blue-500/20 text-lg"
             >
               무료 도입 상담
             </button>
