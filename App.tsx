@@ -268,7 +268,7 @@ const App: React.FC = () => {
                   ? {
                       title: '보고서/자료 요약기',
                       // TODO: 보고서/자료 요약기용 Dify 워크플로우 URL로 교체하세요.
-                      src: 'https://udify.app/workflow/YOUR_REPORT_SUMMARY_WORKFLOW_ID',
+                      src: 'https://udify.app/workflow/wiiyddzOMb3Wq8QA',
                       helper:
                         '요약할 보고서/자료 파일을 업로드한 후 실행을 눌러 주세요.',
                     }
