@@ -4,9 +4,10 @@ interface ToolListProps {
   onBack: () => void;
   onConsult: () => void;
   onActivateDify?: () => void;
+  onActivateReportSummary?: () => void;
 }
 
-const ToolList: React.FC<ToolListProps> = ({ onBack, onConsult, onActivateDify }) => {
+const ToolList: React.FC<ToolListProps> = ({ onBack, onConsult, onActivateDify, onActivateReportSummary }) => {
   const tools = [
     { no: 1, category: '기타 (사용가능)', name: '보고서/자료 요약기', definition: '각종 보고서나 참고자료에 대해 1. 작성자/일시, 2. 목적/취지, 3. 주요 내용, 4. 인사관점 착안사항의 순으로 핵심내용을 정리해줌', oldTime: '20분', aiOutput: '보고서/자료 요약파일', aiTime: '1분', note: '인기' },
     { no: 2, category: '기타 (사용가능)', name: '우리회사 취업규칙/인사규정 챗봇', definition: '회사의 취업규칙과 인사규정을 업로드한 후 다양한 질문을 하면 이에 대해 바로 응답해 주는 챗봇이 생성됨', oldTime: '-', aiOutput: '실시간 챗봇', aiTime: '1분', note: '' },
@@ -70,6 +71,13 @@ const ToolList: React.FC<ToolListProps> = ({ onBack, onConsult, onActivateDify }
                       {tool.no === 4 ? (
                         <button 
                           onClick={() => onActivateDify && onActivateDify()}
+                          className="text-left text-base font-black text-blue-600 hover:underline transition-colors"
+                        >
+                          {tool.name}
+                        </button>
+                      ) : tool.no === 1 ? (
+                        <button
+                          onClick={() => onActivateReportSummary && onActivateReportSummary()}
                           className="text-left text-base font-black text-blue-600 hover:underline transition-colors"
                         >
                           {tool.name}

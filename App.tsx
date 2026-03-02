@@ -21,6 +21,7 @@ const App: React.FC = () => {
   const [isDifyActive, setIsDifyActive] = useState(false);
   const [isDifyOpen, setIsDifyOpen] = useState(false);
   const [showFreeTrial, setShowFreeTrial] = useState(false);
+  const [difyTool, setDifyTool] = useState<'ats' | 'report-summary' | null>(null);
 
   // Scroll to top on view change
   useEffect(() => {
@@ -85,6 +86,12 @@ const App: React.FC = () => {
             onBack={() => setView('home')} 
             onConsult={() => setView('consultation')}
             onActivateDify={() => {
+              setDifyTool('ats');
+              setIsDifyActive(true);
+              setIsDifyOpen(true);
+            }}
+            onActivateReportSummary={() => {
+              setDifyTool('report-summary');
               setIsDifyActive(true);
               setIsDifyOpen(true);
             }}
@@ -251,15 +258,32 @@ const App: React.FC = () => {
         />
       )}
 
-      {/* Global Dify Chatbot Widget */}
-      {isDifyActive && (
+      {/* Global Dify Chatbot Widget (ATS / Report Summary 공용) */}
+      {isDifyActive && difyTool && (
         <div className="fixed bottom-6 right-6 z-[200] flex flex-col items-end">
           {isDifyOpen && (
+            (() => {
+              const difyConfig =
+                difyTool === 'report-summary'
+                  ? {
+                      title: '보고서/자료 요약기',
+                      // TODO: 보고서/자료 요약기용 Dify 워크플로우 URL로 교체하세요.
+                      src: 'https://udify.app/workflow/YOUR_REPORT_SUMMARY_WORKFLOW_ID',
+                      helper:
+                        '요약할 보고서/자료 파일을 업로드한 후 실행을 눌러 주세요.',
+                    }
+                  : {
+                      title: 'AIA 정밀 진단 도구',
+                      src: 'https://udify.app/workflow/0Vtq6IJGl7u76aIi',
+                      helper:
+                        '💡 회사 직무요건(모집요강) 파일과 지원자 이력서 파일을 업로드 한 후 실행을 눌러 주세요',
+                    };
+              return (
             <div className="mb-4 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden w-[95vw] md:w-[1100px] h-[850px] flex flex-col animate-[fadeIn_0.3s_ease-out]">
               <div className="bg-navy p-4 text-white flex justify-between items-center">
                 <div className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  <span className="font-bold text-base">AIA 정밀 진단 도구</span>
+                  <span className="font-bold text-base">{difyConfig.title}</span>
                 </div>
                 <button 
                   onClick={() => setIsDifyOpen(false)}
@@ -272,18 +296,20 @@ const App: React.FC = () => {
               </div>
               <div className="flex-1 w-full bg-white overflow-hidden relative">
                 <iframe
-                  src="https://udify.app/workflow/0Vtq6IJGl7u76aIi"
+                  src={difyConfig.src}
                   style={{ width: '100%', height: '100%', minHeight: '700px', border: 'none' }}
-                  title="AIA Precision Diagnosis Tool"
+                  title="AIA Dify Tool"
                   allow="microphone"
                 ></iframe>
               </div>
               <div className="bg-blue-50 p-5 border-t border-blue-100">
                  <p className="text-blue-900 text-center text-sm font-bold leading-relaxed">
-                   💡 회사 직무요건(모집요강) 파일과 지원자 이력서 파일을<br />업로드 한 후 실행을 눌러 주세요
+                   {difyConfig.helper}
                  </p>
               </div>
             </div>
+              );
+            })()
           )}
           <button
             onClick={() => setIsDifyOpen(!isDifyOpen)}
