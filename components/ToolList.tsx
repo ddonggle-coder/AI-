@@ -5,9 +5,11 @@ interface ToolListProps {
   onConsult: () => void;
   onActivateDify?: () => void;
   onActivateReportSummary?: () => void;
+  onActivateATSAnalyzer?: () => void; 
+  onActivateEvalCollector?: () => void;
 }
 
-const ToolList: React.FC<ToolListProps> = ({ onBack, onConsult, onActivateDify, onActivateReportSummary }) => {
+const ToolList: React.FC<ToolListProps> = ({ onBack, onConsult, onActivateDify, onActivateReportSummary, onActivateATSAnalyzer, onActivateEvalCollector }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortKey, setSortKey] = useState<'default' | 'name' | 'aiTime'>('default');
   const tools = [
@@ -865,13 +867,16 @@ const ToolList: React.FC<ToolListProps> = ({ onBack, onConsult, onActivateDify, 
                       </span>
                     </td>
                     <td className="py-6 px-6 border-r border-slate-100">
-                      {tool.no === 4 ? (
-                        <button 
-                          onClick={() => onActivateDify && onActivateDify()}
-                          className="text-left text-base font-black text-blue-600 hover:underline transition-colors"
-                        >
-                          {tool.name}
-                        </button>
+                    {tool.no === 4 ? (
+                      <button
+                        onClick={() => onActivateATSAnalyzer && onActivateATSAnalyzer()}
+                        className="text-left text-base font-black text-blue-600 hover:underline transition-colors flex items-center gap-2"
+                      >
+                        {tool.name}
+                        <span className="text-[10px] font-black bg-blue-600 text-white px-2 py-0.5 rounded-full uppercase tracking-wider">
+                          NEW
+                        </span>
+                      </button>
                       ) : tool.no === 1 ? (
                         <button
                           onClick={() => onActivateReportSummary && onActivateReportSummary()}
@@ -879,10 +884,16 @@ const ToolList: React.FC<ToolListProps> = ({ onBack, onConsult, onActivateDify, 
                         >
                           {tool.name}
                         </button>
-                      ) : (
-                        <span className="text-base font-black text-navy group-hover:text-blue-600 transition-colors">
+                      ) : tool.no === 17 ? (   // ← 이 블록만 추가
+                        <button onClick={() => onActivateEvalCollector && onActivateEvalCollector()}
+                          className="text-left text-base font-black text-blue-600 hover:underline transition-colors flex items-center gap-2">
                           {tool.name}
-                        </span>
+                          <span className="text-[10px] font-black bg-blue-600 text-white px-2 py-0.5 rounded-full uppercase tracking-wider">
+                            NEW
+                          </span>
+                        </button>
+                      ) : (
+                        <span className="text-base font-black text-navy group-hover:text-blue-600 transition-colors">{tool.name}</span>
                       )}
                     </td>
                     <td className="py-6 px-6 border-r border-slate-100">

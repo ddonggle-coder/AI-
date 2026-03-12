@@ -12,8 +12,11 @@ import CategoryDetail from './components/CategoryDetail';
 import ConsultationForm from './components/ConsultationForm';
 import ToolList from './components/ToolList';
 import FreeTrialModal from './components/FreeTrialModal';
+import ATSAnalyzer from './components/ATSAnalyzer';
+import EvalCollector from './components/EvalCollector';
 
-export type PageView = 'home' | 'ats-detail' | 'aia-info' | 'category-detail' | 'consultation' | 'tool-list';
+
+export type PageView = 'home' | 'ats-detail' | 'aia-info' | 'category-detail' | 'consultation' | 'tool-list' | 'ats-analyzer'  | 'eval-collector';;
 
 const App: React.FC = () => {
   const [view, setView] = useState<PageView>('home');
@@ -57,6 +60,10 @@ const App: React.FC = () => {
 
   const renderContent = () => {
     switch (view) {
+      case 'eval-collector':
+        return <EvalCollector onBack={() => setView('tool-list')} />;
+      case 'ats-analyzer':
+        return <ATSAnalyzer onBack={() => setView('tool-list')} />;
       case 'ats-detail':
         return (
           <ATSDetail 
@@ -95,7 +102,11 @@ const App: React.FC = () => {
               setIsDifyActive(true);
               setIsDifyOpen(true);
             }}
+            onActivateATSAnalyzer={() => setView('ats-analyzer')} 
+            onActivateEvalCollector={() => setView('eval-collector')}
+
           />
+          
         );
       case 'home':
       default:
